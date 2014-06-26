@@ -1,2 +1,2 @@
-medinotify
+NotyMedify
 ==========

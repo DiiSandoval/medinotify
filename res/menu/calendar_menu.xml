@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/itemAddCalendar"
+        android:icon="@drawable/ic_action_new"
+        android:title="@string/addbar"
+        android:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/CerrarSesion"
+        android:title="@string/cerrarSesion">
+    </item>
+    
+     <item
+        android:id="@+id/Mapa"
+        android:title="@string/mapa">
+    </item>
+
+</menu>

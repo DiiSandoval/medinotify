@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MediNotify</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="background">Background</string>
+    <string name="image">Imagen</string>
+    <string name="text">Texto</string>
+    <string name="text_user">Usuario:</string>
+    <string name="text_password">Password:</string>
+    <string name="text_accept">Aceptar</string>
+    <string name="juan">Juan Manuel Sánchez Gómez</string>
+    <string name="hector">Hector</string>
+    <string name="diego">Diego Sandoval</string>
+    <string name="register">Registrarse</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="title_activity_next">NextActivity</string>
+    <string name="cerrarSesion">Cerrar Sesion</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="nombre">Nombre</string>
+    <string name="nombre1">Nombre:</string>
+    <string name="sexo">Sexo:*</string>
+    <string name="fecha">Fecha Nacimiento:</string>
+    <string name="fecha1">Nacimiento:</string>
+    <string name="contrasena">Contraseña:*</string>
+    <string name="rcontrasena">Rep. Contraseña:*</string>
+    <string name="mujer">Mujer</string>
+    <string name="apellido">Apellidos:</string>
+    <string name="seso">Sexo:*</string>
+    <string name="fechaNacimiento">Fecha \nNacimiento</string>
+    <string name="nombreUsuario">Nombre \nusuario*</string>
+    <string name="repiteContrasena">Repite \ncontraseña:*</string>
+    <string name="email">Email:</string>
+    <string name="hombre">Hombre</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="asteriscos">Los campos marcados con * son obligatorios.</string>
+    <string name="formatoFecha">Formato: xx/xx/xxxx</string>
+    <string name="nada"></string>
+    <string name="MiCalendario">My Calendar</string>
+    <string name="title_activity_dosis">Nueva dosis</string>
+    <string name="Mas">+</string>
+    <string name="Menos">-</string>
+    <string name="nuevadosis">Nueva dosis:</string>
+    <string name="medicamentos">Medicamentos</string>
+    <string name="insulina">Insulina</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="frecuencia">Frecuencia:</string>
+    <string name="repetirestocada">Repetir esto cada:</string>
+    <string name="repetirhasta">Repetir hasta:</string>
+    <string name="repetirdesde">Repetir desde:</string>
+    <string name="btaceptar">Aceptar</string>
+    <string name="btCancelar">Cancelar</string>
+    <string name="nuevomedicamento">Escoge medicamento</string>
+    <string name="barra">/</string>
+    <string name="title_activity_calendary">CalendaryActivity</string>
+    <string name="title_activity_calendary_dialog">CalendaryDialog</string>
+    <string name="selectfrec">Select frec.</string>
+    <string name="title_activity_day">DayActivity</string>
+
+    <string-array name="frecArray1">
+        <item>Mañana</item>
+        <item>Tarde</item>
+        <item>Noche</item>
+    </string-array>
+    <string-array name="cantArray">
+        <item>&#188;</item>
+        <item>&#189;</item>
+        <item>1 y &#188;</item>
+        <item>1 y &#189;</item>
+        <item>2</item>
+        <item>2 y &#188;</item>
+        <item>2 y &#189;</item>
+        <item>3</item>
+        <item>3 y &#188;</item>
+        <item>3 y &#189;</item>
+        <item>4</item>
+        <item>4 y &#188;</item>
+        <item>4 y &#189;</item>
+        <item>5</item>
+        <item>5 y &#188;</item>
+        <item>5 y &#189;</item>
+    </string-array>
+    <string-array name="cantIntArray">
+        <item>1 dosis</item>
+        <item>2 dosis</item>
+        <item>3 dosis</item>
+        <item>4 dosis</item>
+        <item>5 dosis</item>
+    </string-array>
+    <string-array name="repetirArray">
+        <item>dia</item>
+        <item>lunes</item>
+        <item>martes</item>
+        <item>miércoles</item>
+        <item>jueves</item>
+        <item>viernes</item>
+        <item>sábado</item>
+        <item>domingo</item>
+    </string-array>
+
+    <string name="title_activity_dosis_grid">DosisGridActivity</string>
+    <string name="diabetico">Diabetico:*</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="mapa">Mapa</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_medi_choose">MediChooseActivity</string>
+    <string name="addbar">Add</string>
+    <string name="leftmonth">Left Month</string>
+    <string name="rightmonth">Right Month</string>
+    <string name="calheader">Calendar Header</string>
+    <string name="fecha_inicio">Fecha de inicio:</string>
+    <string name="fecha_termino">Fecha de término:</string>
+    <string name="repetirGrid">Repetir cada:</string>
+    <string name="comentarios">Comentarios:</string>
+    <string name="funcion">Funcion:</string>
+    <string name="selectImg">Selecciona imagen</string>
+    <string name="title_activity_add_medicine">AddMedicineActivity</string>
+    <string name="metodo">Metodo:</string>
+    
+<string-array name="metodoArray">
+        <item>Oral</item>
+        <item>Rectal</item>
+        <item>Topico</item>
+        <item>Inyeccion</item>
+    </string-array>
+    
+    
+</resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.medinotify"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+<!--     <permission -->
+<!--         android:name="com.medinotify.permission.MAPS_RECEIVE" -->
+<!--         android:protectionLevel="signature" /> -->
+
+<!--     <uses-permission android:name="com.medinotify.permission.MAPS_RECEIVE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_medi"
+        android:label="@string/app_name"
+        android:theme="@style/AppBaseTheme" >
+<!--         <meta-data -->
+<!--             android:name="com.google.android.maps.v2.API_KEY" -->
+<!--             android:value="AIzaSyBpkJMVGFBgLhHt7D4u2MnLKEel0oo-vT8" /> -->
+<!--         <meta-data -->
+<!--             android:name="com.google.android.gms.version" -->
+<!--             android:value="@integer/google_play_services_version" /> -->
+
+        <activity
+            android:name="com.medinotify.activity.LoginActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.NextActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.RegisterActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+            
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.CalendarActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.DosisActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.CalendaryActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.DateDialog"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.DayActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.DosisGridActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.MediListActivity"
+            android:label="@string/title_activity_medi_choose" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.calendario.AddMedicineActivity"
+            android:label="@string/title_activity_add_medicine" 
+             android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        </activity>
+    </application>
+
+</manifest>
