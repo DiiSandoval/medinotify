@@ -26,6 +26,7 @@ public class LoginActivity extends Activity {
 	private EditText passwordUser = null;
 	private Button buttonAccept = null;
 	private Button buttonRegister = null;
+	private String pene;
 
 	// private ServiceFactory serviceFactory = null;
 
