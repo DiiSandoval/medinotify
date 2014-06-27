@@ -13,7 +13,6 @@ import com.medinotify.model.Usuario;
 
 public class DBRequest extends DBConnection {
 
-	private static DBConnection con = new DBConnection();
 	private static Connection conexion;
 	private static String SQLGetAllMedicines = "SELECT m.* from medicina m, botiquin b, usuario u  where u.id=b.id_user and m.id=b.id_med and u.id=?";
 	private static String SQLGetAllDosis = "SELECT * from dosis where idUsuario=? and fecha_desde <= ? and fecha_hasta>=?";
@@ -26,17 +25,16 @@ public class DBRequest extends DBConnection {
 			+ "funcion,comentario,code,metodo) " + "VALUES (?,?,?,?,?,?)";
 	private static String SQL_CODE = "select max id from medicina";
 	private static String SQLAddDosis = "INSERT INTO DOSIS"
-			+ "(ID_USER,ID_MED,"
-			+ "CANTIDAD,FRECUENCIA,fecha,tomado) "
+			+ "(ID_USER,ID_MED," + "CANTIDAD,FRECUENCIA,fecha,tomado) "
 			+ "VALUES (?,?,?,?,?,false)";
 	private static String SQL_TomarDosis = "update dosis set tomado=true where id_user=? and id_med=?";
-	
-	
-	
+	private static String SQL_ExistUser = "SELECT * from Usuario where nick=?";
+
 	public Usuario login(String nick, String password) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Usuario usuario = null;
+		Connection conexion = null;
 		try {
 			conexion = DBConnection.crearConexion();
 			ps = conexion.prepareStatement(SQLLogin);
@@ -47,8 +45,7 @@ public class DBRequest extends DBConnection {
 				usuario = new Usuario(rs.getString("nick"),
 						rs.getString("nombre"), rs.getString("apellidos"),
 						rs.getString("sexo"), rs.getString("fechaNacimiento"),
-						rs.getString("email"),
-						rs.getString("password"));
+						rs.getString("email"), rs.getString("password"));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -72,7 +69,7 @@ public class DBRequest extends DBConnection {
 			while (rs.next()) {
 				medicinas.add(new Medicina(rs.getString("nombre"), rs
 						.getString("funcion"), rs.getString("comentario"), rs
-						.getString("code"),rs.getString("metodo")));
+						.getString("code"), rs.getString("metodo")));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -128,8 +125,7 @@ public class DBRequest extends DBConnection {
 				usuario = new Usuario(rs.getString("nombreUsuario"),
 						rs.getString("nombre"), rs.getString("apellidos"),
 						rs.getString("sexo"), rs.getString("fechaNacimiento"),
-						rs.getString("email"),
-						rs.getString("password"));
+						rs.getString("email"), rs.getString("password"));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -140,7 +136,8 @@ public class DBRequest extends DBConnection {
 		return usuario;
 	}
 
-	public void addMedicine(String nombre, String funcion, String comentario,String metodo) {
+	public void addMedicine(String nombre, String funcion, String comentario,
+			String metodo) {
 		PreparedStatement ps = null;
 		try {
 			conexion = DBConnection.crearConexion();
@@ -149,7 +146,7 @@ public class DBRequest extends DBConnection {
 			ps.setString(2, funcion);
 			ps.setString(3, comentario);
 			ps.setString(4, getCode());
-			ps.setString(5,metodo);
+			ps.setString(5, metodo);
 
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -212,6 +209,22 @@ public class DBRequest extends DBConnection {
 		} finally {
 			cerrarConexion();
 		}
+	}
+
+	public boolean existUser(String nombreUsuario) {
+		PreparedStatement ps = null;
+		try {
+			conexion = DBConnection.crearConexion();
+			ps = conexion.prepareStatement(SQL_ExistUser);
+			ps.setString(1, nombreUsuario);
+			int n = ps.executeUpdate();
+			return n == 1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			cerrarConexion();
+		}
+		return false;
 	}
 
 }

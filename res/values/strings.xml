@@ -119,13 +119,14 @@
     <string name="selectImg">Selecciona imagen</string>
     <string name="title_activity_add_medicine">AddMedicineActivity</string>
     <string name="metodo">Metodo:</string>
-    
-<string-array name="metodoArray">
+
+    <string-array name="metodoArray">
         <item>Oral</item>
         <item>Rectal</item>
         <item>Topico</item>
         <item>Inyeccion</item>
     </string-array>
-    
-    
+
+    <string name="title_activity_registro">RegistroActivity</string>
+
 </resources>

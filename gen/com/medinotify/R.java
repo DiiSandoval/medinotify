@@ -39,6 +39,11 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
@@ -155,9 +160,11 @@ public final class R {
         public static final int activity_medi_list=0x7f030006;
         public static final int activity_next=0x7f030007;
         public static final int activity_register=0x7f030008;
-        public static final int list_group=0x7f030009;
-        public static final int list_item=0x7f03000a;
-        public static final int screen_gridcell=0x7f03000b;
+        public static final int activity_registro=0x7f030009;
+        public static final int fragment_registro=0x7f03000a;
+        public static final int list_group=0x7f03000b;
+        public static final int list_item=0x7f03000c;
+        public static final int screen_gridcell=0x7f03000d;
     }
     public static final class menu {
         public static final int add_medicine=0x7f090000;
@@ -171,7 +178,8 @@ public final class R {
         public static final int medi_choose=0x7f090008;
         public static final int next=0x7f090009;
         public static final int register=0x7f09000a;
-        public static final int user=0x7f09000b;
+        public static final int registro=0x7f09000b;
+        public static final int user=0x7f09000c;
     }
     public static final class string {
         public static final int Mas=0x7f060027;
@@ -249,6 +257,7 @@ public final class R {
         public static final int title_activity_medi_choose=0x7f06003f;
         public static final int title_activity_next=0x7f06000f;
         public static final int title_activity_register=0x7f060011;
+        public static final int title_activity_registro=0x7f06004c;
         public static final int title_activity_user=0x7f06000e;
     }
     public static final class style {

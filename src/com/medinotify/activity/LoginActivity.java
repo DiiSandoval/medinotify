@@ -26,8 +26,6 @@ public class LoginActivity extends Activity {
 	private EditText passwordUser = null;
 	private Button buttonAccept = null;
 	private Button buttonRegister = null;
-	private String pene;
-
 	// private ServiceFactory serviceFactory = null;
 
 	private Business business = null;
@@ -55,7 +53,9 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				LaunchActivity.launchRegisterActivity(LoginActivity.this);
+				//LaunchActivity.launchRegisterActivity(LoginActivity.this);
+				Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+				startActivity(intent);
 			}
 		});
 

@@ -62,9 +62,4 @@ public class DBConnection {
         }
         return rs;
     }
-
-	public PreparedStatement prepareStatement(String sQLGetAllMedicines) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
