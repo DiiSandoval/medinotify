@@ -1,5 +1,6 @@
 package com.medinotify.model;
 
+
 public class Usuario {
 
 	private String nick;
@@ -67,6 +68,27 @@ public class Usuario {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [nick=");
+		builder.append(nick);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", apellidos=");
+		builder.append(apellidos);
+		builder.append(", sexo=");
+		builder.append(sexo);
+		builder.append(", fechaNacimiento=");
+		builder.append(fechaNacimiento);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

@@ -28,12 +28,15 @@ public class BusinessImpl implements Business {
 
 	private boolean datosCorrectos(String nombreUsuario, boolean hombre,
 			boolean mujer, String email, String password, String password2) {
-		return hombre !=mujer && !exist(nombreUsuario)
-				&& email.contains("@") && password.equals(password2);
+		return hombre !=mujer && 
+				!exist(nombreUsuario)
+				&& email.contains("@") 
+				&& password.equals(password2);
 	}
 
 	private boolean exist(String nombreUsuario) {
-		return new DBRequest().existUser(nombreUsuario);
+		//return new DBRequest().existUser(nombreUsuario);
+		return false;
 	}
 
 	private String getSexo(boolean hombre) {

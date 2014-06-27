@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.StrictMode;
+import android.service.textservice.SpellCheckerService.Session;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,9 +17,7 @@ import com.medinotify.R;
 import com.medinotify.activity.calendario.CalendarActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
-import com.medinotify.model.Session;
-import com.medinotify.model.Usuario;
-import com.medinotify.utility.LaunchActivity;
+import com.medinotify.model.*;
 
 public class LoginActivity extends Activity {
 
@@ -34,6 +33,9 @@ public class LoginActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+				.permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
@@ -53,32 +55,35 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				//LaunchActivity.launchRegisterActivity(LoginActivity.this);
-				Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+				// LaunchActivity.launchRegisterActivity(LoginActivity.this);
+				Intent intent = new Intent(LoginActivity.this,
+						RegistroActivity.class);
 				startActivity(intent);
 			}
 		});
 
 	}
+
 	private void login() {
 		// serviceFactory.getUserService().login(
 		// nameUser.getText().toString(),
 		// passwordUser.getText().toString());
-		Usuario usuario = business.login(nameUser.getText().toString(), passwordUser
-				.getText().toString());
-		if(usuario!=null){
-			Session.getInstance().setUsuarioActual(usuario);
-			Intent intent = new Intent(LoginActivity.this, CalendarActivity.class);
+		Usuario usuario = business.login(nameUser.getText().toString(),
+				passwordUser.getText().toString());
+
+		if (usuario != null) {
+			com.medinotify.model.Session.getInstance()
+					.setUsuarioActual(usuario);
+			Intent intent = new Intent(LoginActivity.this,
+					CalendarActivity.class);
 			startActivity(intent);
-			Toast.makeText(getApplicationContext(),
-		            "s",Toast.LENGTH_SHORT).show();
-		}else{
-			Toast.makeText(getApplicationContext(),
-            "Datos incorrectos",Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "s", Toast.LENGTH_SHORT)
+					.show();
+		} else {
+			Toast.makeText(getApplicationContext(), "Datos incorrectos",
+					Toast.LENGTH_SHORT).show();
 		}
 	}
-
-
 
 	private void initialize() {
 		nameUser = (EditText) findViewById(R.id.editText_User);

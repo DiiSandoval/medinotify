@@ -1,5 +1,6 @@
 package com.medinotify.model;
 
+
 public class Medicina {
 	private String nombre;
 	private String funcion;

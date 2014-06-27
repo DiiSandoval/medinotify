@@ -10,11 +10,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.medinotify.R;
-import com.medinotify.model.UserRegister;
 
 public class RegisterActivity extends Activity {
 
-	private UserRegister user = null;
 
 	private EditText nombre = null;
 	private EditText apellidos = null;
@@ -57,9 +55,9 @@ public class RegisterActivity extends Activity {
 	// Posible mejora
 	private void comprobarCampos() {
 
-		user = new UserRegister(nombre, apellidos, hombre, mujer, diabeticoSI,
-				diabeticoNO, nombreUsuario, fechaNacimiento, contrasena,
-				repiteContrana, email);
+//		user = new UserRegister(nombre, apellidos, hombre, mujer, diabeticoSI,
+//				diabeticoNO, nombreUsuario, fechaNacimiento, contrasena,
+//				repiteContrana, email);
 
 		//serviceFactory.getUserService().registerUser(user);
 

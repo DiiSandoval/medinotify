@@ -1,6 +1,7 @@
 package com.medinotify.model;
 
 
+
 public class Dosis {
 
 	private String cantidad;

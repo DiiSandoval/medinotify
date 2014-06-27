@@ -1,5 +1,6 @@
 package com.medinotify.model;
 
+
 public class Session {
 	private static Session INSTANCE = null;
 	private Usuario usuarioActual;

@@ -64,17 +64,17 @@ public class RegistroActivity extends Activity {
 	private void register() {
 		Usuario usuario = business.register(nombreUsuario.getText().toString(),
 				nombre.getText().toString(), apellidos.getText().toString(),
-				hombre.isPressed(), mujer.isPressed(),
+				hombre.isChecked(), mujer.isChecked(),
 				fechaNacimiento.getText().toString(), email.getText()
 						.toString(), contrasena.getText().toString(),
 				repiteContrana.getText().toString());
 		if (usuario != null) {
 			Session.getInstance().setUsuarioActual(usuario);
 			Intent intent = new Intent(RegistroActivity.this,
-					CalendarActivity.class);
+					LoginActivity.class);
 			startActivity(intent);
-			Toast.makeText(getApplicationContext(), "s", Toast.LENGTH_SHORT)
-					.show();
+//			Toast.makeText(getApplicationContext(), "s", Toast.LENGTH_SHORT)
+//					.show();
 		} else {
 			Toast.makeText(getApplicationContext(), "Datos incorrectos",
 					Toast.LENGTH_SHORT).show();
