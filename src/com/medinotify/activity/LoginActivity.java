@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.medinotify.R;
-import com.medinotify.activity.calendario.CalendarActivity;
+import com.medinotify.activity.inutil.CalendarActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.*;
@@ -75,9 +75,9 @@ public class LoginActivity extends Activity {
 			com.medinotify.model.Session.getInstance()
 					.setUsuarioActual(usuario);
 			Intent intent = new Intent(LoginActivity.this,
-					CalendarActivity.class);
+					CalendarioActivity.class);
 			startActivity(intent);
-			Toast.makeText(getApplicationContext(), "s", Toast.LENGTH_SHORT)
+			Toast.makeText(getApplicationContext(), "Login correcto como " + usuario.getNick(), Toast.LENGTH_SHORT)
 					.show();
 		} else {
 			Toast.makeText(getApplicationContext(), "Datos incorrectos",

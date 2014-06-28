@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.medinotify.activity.LoginActivity;
-import com.medinotify.activity.RegisterActivity;
-import com.medinotify.activity.calendario.CalendarActivity;
+import com.medinotify.activity.inutil.CalendarActivity;
+import com.medinotify.activity.inutil.RegisterActivity;
 
 public class LaunchActivity {
 

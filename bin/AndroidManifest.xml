@@ -47,22 +47,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.medinotify.activity.NextActivity"
+            android:name="com.medinotify.activity.inutil.NextActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.medinotify.activity.RegisterActivity"
+            android:name="com.medinotify.activity.inutil.RegisterActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.medinotify.activity.calendario.CalendarActivity"
+            android:name="com.medinotify.activity.inutil.CalendarActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
@@ -110,6 +110,10 @@
         <activity
             android:name="com.medinotify.activity.RegistroActivity"
             android:label="@string/title_activity_registro" >
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.CalendarioActivity"
+            android:label="@string/title_activity_calendario" >
         </activity>
     </application>
 

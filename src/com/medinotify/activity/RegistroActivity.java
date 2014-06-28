@@ -4,7 +4,7 @@ import com.medinotify.R;
 import com.medinotify.R.id;
 import com.medinotify.R.layout;
 import com.medinotify.R.menu;
-import com.medinotify.activity.calendario.CalendarActivity;
+import com.medinotify.activity.inutil.CalendarActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.Session;

@@ -1,4 +1,4 @@
-package com.medinotify.activity;
+package com.medinotify.activity.inutil;
 
 import android.app.Activity;
 import android.os.Bundle;

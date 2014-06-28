@@ -1,4 +1,4 @@
-package com.medinotify.activity.calendario;
+package com.medinotify.activity.inutil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.medinotify.R;
+import com.medinotify.activity.calendario.DayActivity;
+import com.medinotify.activity.calendario.DosisGridActivity;
 import com.medinotify.utility.LaunchActivity;
 
 public class CalendarActivity extends Activity implements OnClickListener {

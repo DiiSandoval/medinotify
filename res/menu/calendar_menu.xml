@@ -10,10 +10,5 @@
         android:id="@+id/CerrarSesion"
         android:title="@string/cerrarSesion">
     </item>
-    
-     <item
-        android:id="@+id/Mapa"
-        android:title="@string/mapa">
-    </item>
-
+  
 </menu>
