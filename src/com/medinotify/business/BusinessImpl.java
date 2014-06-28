@@ -3,6 +3,7 @@ package com.medinotify.business;
 import java.util.List;
 
 import com.medinotify.bbdd.DBRequest;
+import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Usuario;
 
@@ -31,14 +32,12 @@ public class BusinessImpl implements Business {
 
 	private boolean datosCorrectos(String nombreUsuario, boolean hombre,
 			boolean mujer, String email, String password, String password2) {
-		return hombre !=mujer && 
-				!exist(nombreUsuario)
-				&& email.contains("@") 
+		return hombre != mujer && !exist(nombreUsuario) && email.contains("@")
 				&& password.equals(password2);
 	}
 
 	private boolean exist(String nombreUsuario) {
-		//return new DBRequest().existUser(nombreUsuario);
+		// return new DBRequest().existUser(nombreUsuario);
 		return false;
 	}
 
@@ -53,17 +52,29 @@ public class BusinessImpl implements Business {
 	}
 
 	@Override
-	public Medicina addMedicine(int idUser,String nombre, String funcion,
+	public Medicina addMedicine(int idUser, String nombre, String funcion,
 			String comentario, String metodo) {
-		if(isDatosCorrectos(nombre,funcion,metodo))
-			return new DBRequest().addMedicine(idUser,nombre, funcion, comentario, metodo);
+		if (isDatosCorrectos(nombre, funcion, metodo))
+			return new DBRequest().addMedicine(idUser, nombre, funcion,
+					comentario, metodo);
 		return null;
 	}
 
-	private boolean isDatosCorrectos(String nombre, String funcion,String metodo) {
-		return nombre !="" && funcion!="" && metodo!="";
+	private boolean isDatosCorrectos(String nombre, String funcion,
+			String metodo) {
+		return nombre != "" && funcion != "" && metodo != "";
 	}
-	
-	
+
+	@Override
+	public Dosis addDosis(int idUser, int idMed, String cantidad,
+			String frecuencia, String fecha) {
+		return new DBRequest().addDosis(idUser, idMed, cantidad, frecuencia,
+				fecha);
+	}
+
+	private boolean isFechaCorrecta(String fecha) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

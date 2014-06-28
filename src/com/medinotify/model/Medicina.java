@@ -6,14 +6,24 @@ public class Medicina {
 	private String funcion;
 	private String comentario;
 	private String metodo;
+	private int id;
 
-	public Medicina( String nombre, String funcion,
+	public Medicina(int id,String nombre, String funcion,
 			String comentario,String metodo) {
 		super();
+		this.id=id;
 		this.nombre = nombre;
 		this.funcion = funcion;
 		this.comentario = comentario;
 		this.metodo=metodo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMetodo() {

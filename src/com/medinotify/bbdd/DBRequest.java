@@ -44,7 +44,7 @@ public class DBRequest extends DBConnection {
 			ResultSet rs = con.executeQuery(q);
 			medicinas = new ArrayList<Medicina>();
 			while (rs.next()) {
-				medicinas.add(new Medicina(rs.getString("nombre"), rs
+				medicinas.add(new Medicina(rs.getInt("id"),rs.getString("nombre"), rs
 						.getString("funcion"), rs.getString("comentario"), rs
 						.getString("metodo")));
 			}
@@ -66,8 +66,7 @@ public class DBRequest extends DBConnection {
 			ResultSet rs = con.executeQuery(q);
 			dosis = new ArrayList<Dosis>();
 			while (rs.next()) {
-				dosis.add(new Dosis(rs.getString("cantidad"), rs
-						.getString("funcion"), rs.getString("frecuencia"), rs
+				dosis.add(new Dosis(rs.getString("cantidad"), rs.getString("frecuencia"), rs
 						.getString("fecha"), rs.getString("tomado")));
 			}
 			rs.close();
@@ -111,7 +110,7 @@ public class DBRequest extends DBConnection {
 					+ "','" + funcion + "','" + comentario + "','" + metodo
 					+ "')";
 			con.executeUpdate(q);
-			m = new Medicina(nombre, funcion, comentario, metodo);
+			m = new Medicina(-1,nombre, funcion, comentario, metodo);
 
 			insertInBotiquin(idUser, nombre, funcion, comentario, metodo);
 
@@ -171,20 +170,23 @@ public class DBRequest extends DBConnection {
 		return code;
 	}
 
-	public void addDosis(Long id_usuario, Long id_med, String cantidad,
+	public Dosis addDosis(int idUser, int idMed, String cantidad,String frecuencia,
 			String fecha) {
+		Dosis d = null;
 		try {
 			DBConnection.crearConexion();
-			String q = "INSERT INTO DOSIS" + "(ID_USER,ID_MED,"
-					+ "CANTIDAD,FRECUENCIA,fecha) " + "VALUES ('" + id_usuario
-					+ "','" + id_med + "','" + cantidad + "','" + fecha
-					+ "',false)";
+			String q = "INSERT INTO Dosis" + "(ID_USER,ID_MED,"
+					+ "CANTIDAD,FRECUENCIA,fecha,tomado) " + "VALUES ('" + idUser
+					+ "','" + idMed + "','" + cantidad + "','" + frecuencia + "','" + fecha
+					+ "','false')";
 			con.executeUpdate(q);
+			d=new Dosis (cantidad,frecuencia,fecha,"false");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
 			cerrarConexion();
 		}
+		return d;
 	}
 
 	public void tomarDosis(Long id_usuario, Long id_med) {
@@ -214,5 +216,6 @@ public class DBRequest extends DBConnection {
 		}
 		return false;
 	}
+
 
 }

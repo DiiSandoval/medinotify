@@ -156,7 +156,7 @@ public class ListMedicamentosActivity extends Activity {
      */
 	private void addMeds(List<String> medsMorning) {
 		List<Medicina> meds = Session.getInstance().getMedicinas();
-		if(meds!=null)
+		if(meds!=null && !meds.isEmpty())
 			for (Medicina medicina : meds) 
 				medsMorning.add(medicina.getNombre());
 		else

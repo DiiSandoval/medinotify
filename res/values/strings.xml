@@ -131,5 +131,6 @@
     <string name="title_activity_new_dosis">NewDosisActivity</string>
     <string name="noescoges">Aun no has escogido medicamento.</string>
     <string name="title_activity_list_medicamentos">ListMedicamentosActivity</string>
+    <string name="aceptarnewdosis">Agregar Dosis</string>
 
 </resources>

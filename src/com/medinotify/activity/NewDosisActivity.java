@@ -11,6 +11,7 @@ import com.medinotify.activity.inutil.DosisGridActivity;
 import com.medinotify.activity.inutil.MediListActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
+import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
 import com.medinotify.model.Usuario;
@@ -31,12 +32,16 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.os.Build;
+import android.preference.EditTextPreference;
 
 public class NewDosisActivity extends Activity {
 	private Button buttonEscogeMedicamento;
+	private Button buttonAgregarDosis;
 
 	private TextView editFechaInicio;
 	private TextView editNombreMedicamento;
@@ -46,7 +51,7 @@ public class NewDosisActivity extends Activity {
 	private int year;
 	private int month;
 	private int day;
-	private int idUser = 0;
+
 	private Business business = new BusinessImpl();
 
 	static final int DATE_DIALOG_ID = 999;
@@ -59,36 +64,60 @@ public class NewDosisActivity extends Activity {
 
 		getActionBar().setTitle("MediNotify");
 
-		Bundle extras = getIntent().getExtras();
-		if (extras != null) {
-			idUser = extras.getInt("idUser");
-		}
 		final Calendar c = Calendar.getInstance();
 		year = c.get(Calendar.YEAR);
 		month = c.get(Calendar.MONTH);
 		day = c.get(Calendar.DAY_OF_MONTH);
 
 		buttonEscogeMedicamento = (Button) findViewById(R.id.buttonEscogerMedicamento);
+		buttonAgregarDosis = (Button) findViewById(R.id.btAddDosis);
 
 		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		spFrecuencia = (Spinner) findViewById(R.id.spinnerFrecuenciaGrid);
 
 		editFechaInicio = (TextView) findViewById(R.id.textViewFechaInicioChange);
-		editFechaInicio.setText(day + "-" + month + 1 + "-" + year);
+		// editFechaInicio.setText(day + "-" + month + 1 + "-" + year);
+		editFechaInicio.setText("Escoge fecha");
 		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		editNombreMedicamento = (TextView) findViewById(R.id.textViewNombreMedicamento);
 		Medicina med = Session.getInstance().getMedicinaEscogida();
-		
-		if(med!=null){
-			editNombreMedicamento.setText(med.getNombre() + " (" + med.getComentario() + ")");
+
+		if (med != null) {
+			editNombreMedicamento
+					.setText(med.getNombre() + " (" + med.getComentario()
+							+ ")  - Funcion: " + med.getFuncion());
 		}
-		
 
 		chooseMed();
 
 		defineSpinners();
 
 		changeDateBegin();
+		buttonAgregarDosis.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (Session.getInstance().getMedicinaEscogida() != null
+						&& !editFechaInicio.getText().toString()
+								.equals("Escoge fecha")) {
+					Dosis dosis = business.addDosis(Session.getInstance()
+							.getUsuarioActual().getId(), Session.getInstance()
+							.getMedicinaEscogida().getId(), spCantidad
+							.getSelectedItem().toString(), spFrecuencia
+							.getSelectedItem().toString(), editFechaInicio
+							.getText().toString());
+					
+					Intent intent = new Intent(NewDosisActivity.this,
+							CalendarioActivity.class);
+					startActivity(intent);
+
+				} else
+					Toast.makeText(getApplicationContext(),
+							"No tienes ninguna medicina y/o fecha seleccionada",
+							Toast.LENGTH_SHORT).show();
+
+			}
+		});
 	}
 
 	@Override
@@ -207,8 +236,8 @@ public class NewDosisActivity extends Activity {
 			// set selected date into textview
 
 			if (fechaSeleccionada == true) {
-				editFechaInicio.setText(new StringBuilder().append(month + 1)
-						.append("-").append(day).append("-").append(year)
+				editFechaInicio.setText(new StringBuilder().append(day)
+						.append("/").append(month + 1).append("/").append(year)
 						.append(" "));
 			}
 		}

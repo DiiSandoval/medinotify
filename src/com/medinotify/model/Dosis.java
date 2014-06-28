@@ -5,15 +5,13 @@ package com.medinotify.model;
 public class Dosis {
 
 	private String cantidad;
-	private String funcion;
 	private String frecuencia;
 	private String fecha;
 	private String tomado;
 
-	public Dosis(String cantidad,String funcion,
+	public Dosis(String cantidad,
 			String frecuencia, String fecha,String tomado) {
 		this.cantidad = cantidad;
-		this.funcion = funcion;
 		this.frecuencia = frecuencia;
 		this.fecha = fecha;
 		this.tomado=tomado;
@@ -29,13 +27,6 @@ public class Dosis {
 		this.cantidad = cantidad;
 	}
 
-	public String getFuncion() {
-		return funcion;
-	}
-
-	public void setFuncion(String funcion) {
-		this.funcion = funcion;
-	}
 
 	public String getFrecuencia() {
 		return frecuencia;

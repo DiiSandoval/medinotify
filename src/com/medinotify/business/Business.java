@@ -2,6 +2,7 @@ package com.medinotify.business;
 
 import java.util.List;
 
+import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Usuario;
 
@@ -17,4 +18,7 @@ public interface Business {
 
 	public Medicina addMedicine(int idUser,String nombre, String funcion, String comentario,
 			String metodo);
+
+	public Dosis addDosis(int idUser, int idMed, String cantidad, String frecuencia,
+			String fecha);
 }

@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:rowCount="12"
+    android:rowCount="13"
     android:useDefaultMargins="true"
     tools:context=".DosisGridActivity" >
 
@@ -121,5 +121,12 @@
         android:layout_gravity="center_horizontal|top"
         android:layout_row="3"
         android:text="@string/noescoges" />
+
+    <Button
+        android:id="@+id/btAddDosis"
+        android:layout_column="0"
+        android:layout_gravity="right|top"
+        android:layout_row="11"
+        android:text="@string/aceptarnewdosis" />
 
 </GridLayout>
