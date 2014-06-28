@@ -14,7 +14,7 @@
     tools:context=".DosisGridActivity" >
 
     <TextView
-        android:id="@+id/textViewNuevaDosis"
+        android:id="@+id/textViewNuevoMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
@@ -39,7 +39,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textViewTacaMedicamento"
+        android:id="@+id/textViewMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
@@ -61,7 +61,7 @@
         android:textStyle="bold" />
 
     <Spinner
-        android:id="@+id/spinnerCantidadGrid"
+        android:id="@+id/spinnerMetodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"

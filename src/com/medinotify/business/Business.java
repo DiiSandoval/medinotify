@@ -14,4 +14,7 @@ public interface Business {
 			String password, String password2);
 
 	public List<Medicina> getAllMedicinas(int idUser);
+
+	public Medicina addMedicine(int idUser,String nombre, String funcion, String comentario,
+			String metodo);
 }

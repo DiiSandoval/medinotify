@@ -51,6 +51,18 @@ public class BusinessImpl implements Business {
 		// TODO Auto-generated method stub
 		return new DBRequest().getAllMedicines(idUser);
 	}
+
+	@Override
+	public Medicina addMedicine(int idUser,String nombre, String funcion,
+			String comentario, String metodo) {
+		if(isDatosCorrectos(nombre,funcion,metodo))
+			return new DBRequest().addMedicine(idUser,nombre, funcion, comentario, metodo);
+		return null;
+	}
+
+	private boolean isDatosCorrectos(String nombre, String funcion,String metodo) {
+		return nombre !="" && funcion!="" && metodo!="";
+	}
 	
 	
 

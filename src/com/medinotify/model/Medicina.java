@@ -5,16 +5,14 @@ public class Medicina {
 	private String nombre;
 	private String funcion;
 	private String comentario;
-	private String code;
 	private String metodo;
 
 	public Medicina( String nombre, String funcion,
-			String comentario,String code,String metodo) {
+			String comentario,String metodo) {
 		super();
 		this.nombre = nombre;
 		this.funcion = funcion;
 		this.comentario = comentario;
-		this.code = code;
 		this.metodo=metodo;
 	}
 
@@ -26,13 +24,6 @@ public class Medicina {
 		this.metodo = metodo;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
 
 	public String getNombre() {
 		return nombre;

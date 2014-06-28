@@ -70,12 +70,12 @@ public class NewDosisActivity extends Activity {
 
 		buttonEscogeMedicamento = (Button) findViewById(R.id.buttonEscogerMedicamento);
 
-		spCantidad = (Spinner) findViewById(R.id.spinnerCantidadGrid);
+		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		spFrecuencia = (Spinner) findViewById(R.id.spinnerFrecuenciaGrid);
 
 		editFechaInicio = (TextView) findViewById(R.id.textViewFechaInicioChange);
 		editFechaInicio.setText(day + "-" + month + 1 + "-" + year);
-		spCantidad = (Spinner) findViewById(R.id.spinnerCantidadGrid);
+		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		editNombreMedicamento = (TextView) findViewById(R.id.textViewNombreMedicamento);
 		Medicina med = Session.getInstance().getMedicinaEscogida();
 		

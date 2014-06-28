@@ -53,7 +53,7 @@ public class DosisGridActivity extends Activity {
 		
 		buttonEscogeMedicamento = (Button) findViewById(R.id.buttonEscogerMedicamento);
 		
-		spCantidad = (Spinner) findViewById(R.id.spinnerCantidadGrid);
+		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		spFrecuencia = (Spinner) findViewById(R.id.spinnerFrecuenciaGrid);
 		
 		editFechaInicio = (TextView) findViewById(R.id.textViewFechaInicioChange);

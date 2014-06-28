@@ -38,7 +38,7 @@ public class DBRequest extends DBConnection {
 	public static List<Medicina> getAllMedicines(int idUser) {
 		List<Medicina> medicinas = null;
 		String q = "SELECT m.* from Medicina m, Botiquin b, Usuario u  where u.id=b.id_user and m.id=b.id_med and u.id = "
-				+ idUser ;
+				+ idUser;
 		try {
 			DBConnection.crearConexion();
 			ResultSet rs = con.executeQuery(q);
@@ -46,7 +46,7 @@ public class DBRequest extends DBConnection {
 			while (rs.next()) {
 				medicinas.add(new Medicina(rs.getString("nombre"), rs
 						.getString("funcion"), rs.getString("comentario"), rs
-						.getString("code"), rs.getString("metodo")));
+						.getString("metodo")));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -56,7 +56,7 @@ public class DBRequest extends DBConnection {
 		}
 		return medicinas;
 	}
-	
+
 	public static List<Dosis> getAllDosis(Long idUsuario) {
 		List<Dosis> dosis = null;
 		try {
@@ -101,15 +101,49 @@ public class DBRequest extends DBConnection {
 		return usuario;
 	}
 
-	public void addMedicine(String nombre, String funcion, String comentario,
-			String metodo) {
+	public Medicina addMedicine(int idUser, String nombre, String funcion,
+			String comentario, String metodo) {
+		Medicina m = null;
 		try {
 			DBConnection.crearConexion();
-			String q = "INSERT INTO medicina" + "(nombre,"
+			String q = "INSERT INTO Medicina" + "(nombre,"
 					+ "funcion,comentario,metodo) " + "VALUES ('" + nombre
 					+ "','" + funcion + "','" + comentario + "','" + metodo
 					+ "')";
 			con.executeUpdate(q);
+			m = new Medicina(nombre, funcion, comentario, metodo);
+
+			insertInBotiquin(idUser, nombre, funcion, comentario, metodo);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			cerrarConexion();
+		}
+
+		return m;
+	}
+
+	private void insertInBotiquin(int idUser, String nombre, String funcion,
+			String comentario, String metodo) {
+
+		String q = "SELECT id from Medicina m where nombre='" + nombre
+				+ "' and funcion='" + funcion + "' and metodo='" + metodo + "'";
+		try {
+			DBConnection.crearConexion();
+			ResultSet rs = con.executeQuery(q);
+			int id = -1;
+			while (rs.next()) {
+				id = rs.getInt("id");
+			}
+			if(id!=-1){
+				q = "INSERT INTO Botiquin" + "(id_user,"
+						+ "id_med) " + "VALUES ('" + idUser
+						+ "','" + id + "')";
+				con.executeUpdate(q);
+			}
+			
+			rs.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
