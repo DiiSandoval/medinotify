@@ -9,20 +9,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
-import com.medinotify.R;
-import com.medinotify.R.id;
-import com.medinotify.R.layout;
-import com.medinotify.R.menu;
-import com.medinotify.activity.inutil.CalendarActivity;
-import com.medinotify.activity.inutil.DayActivity;
-import com.medinotify.activity.inutil.DosisGridActivity;
-import com.medinotify.activity.inutil.CalendarActivity.GridCellAdapter;
-import com.medinotify.model.Session;
-import com.medinotify.utility.LaunchActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -34,14 +22,17 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.os.Build;
+
+import com.medinotify.R;
+import com.medinotify.model.Session;
+import com.medinotify.utility.LaunchActivity;
 
 public class CalendarioActivity extends Activity implements OnClickListener{
 

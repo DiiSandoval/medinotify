@@ -77,6 +77,20 @@ public class BusinessImpl implements Business {
 				fecha);
 	}
 
+	@Override
+	public void tomarDosis(int iduser,String fechaTomada, String dosisString) {
+		// TODO Auto-generated method stub
+		String cantidad = getCantidad(dosisString);
+		new DBRequest().tomarDosis(iduser,fechaTomada, cantidad);
+	}
+
+	private String getCantidad(String dosisString) {
+		String[] parts = dosisString.split(" - ");
+		String part1 = parts[2];
+		String[] parts2 = part1.split("Cantidad:");
+		return parts2[1];
+	}
+
 
 
 }

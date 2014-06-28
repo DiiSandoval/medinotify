@@ -3,14 +3,14 @@ package com.medinotify.utility;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.medinotify.activity.CalendarioActivity;
 import com.medinotify.activity.LoginActivity;
-import com.medinotify.activity.inutil.CalendarActivity;
-import com.medinotify.activity.inutil.RegisterActivity;
+import com.medinotify.activity.RegistroActivity;
 
 public class LaunchActivity {
 
 	public static void launchCalendarActivity(Activity activity) {
-		Intent intent = new Intent(activity, CalendarActivity.class);
+		Intent intent = new Intent(activity, CalendarioActivity.class);
 		activity.startActivity(intent);
 		activity.finish();
 	}
@@ -22,7 +22,7 @@ public class LaunchActivity {
 	}
 
 	public static void launchRegisterActivity(Activity activity) {
-		Intent intent = new Intent(activity, RegisterActivity.class);
+		Intent intent = new Intent(activity, RegistroActivity.class);
 		activity.startActivity(intent);
 	}
 }

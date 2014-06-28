@@ -44,9 +44,9 @@ public class DBRequest extends DBConnection {
 			ResultSet rs = con.executeQuery(q);
 			medicinas = new ArrayList<Medicina>();
 			while (rs.next()) {
-				medicinas.add(new Medicina(rs.getInt("id"),rs.getString("nombre"), rs
-						.getString("funcion"), rs.getString("comentario"), rs
-						.getString("metodo")));
+				medicinas.add(new Medicina(rs.getInt("id"), rs
+						.getString("nombre"), rs.getString("funcion"), rs
+						.getString("comentario"), rs.getString("metodo")));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -62,13 +62,13 @@ public class DBRequest extends DBConnection {
 		Dosis d = null;
 		try {
 			DBConnection.crearConexion();
-			String q = "SELECT * from Dosis where id_user = '" + idUser
-					+ "'";
+			String q = "SELECT * from Dosis where id_user = '" + idUser + "'";
 			ResultSet rs = con.executeQuery(q);
 			dosis = new ArrayList<Dosis>();
 			while (rs.next()) {
-				d = new Dosis(rs.getString("cantidad"), rs.getString("frecuencia"), rs
-						.getString("fecha"), rs.getString("tomado"));
+				d = new Dosis(rs.getString("cantidad"),
+						rs.getString("frecuencia"), rs.getString("fecha"),
+						rs.getString("tomado"));
 				d.setId_med(rs.getInt("id_med"));
 				dosis.add(d);
 			}
@@ -113,7 +113,7 @@ public class DBRequest extends DBConnection {
 					+ "','" + funcion + "','" + comentario + "','" + metodo
 					+ "')";
 			con.executeUpdate(q);
-			m = new Medicina(-1,nombre, funcion, comentario, metodo);
+			m = new Medicina(-1, nombre, funcion, comentario, metodo);
 
 			insertInBotiquin(idUser, nombre, funcion, comentario, metodo);
 
@@ -138,13 +138,12 @@ public class DBRequest extends DBConnection {
 			while (rs.next()) {
 				id = rs.getInt("id");
 			}
-			if(id!=-1){
-				q = "INSERT INTO Botiquin" + "(id_user,"
-						+ "id_med) " + "VALUES ('" + idUser
-						+ "','" + id + "')";
+			if (id != -1) {
+				q = "INSERT INTO Botiquin" + "(id_user," + "id_med) "
+						+ "VALUES ('" + idUser + "','" + id + "')";
 				con.executeUpdate(q);
 			}
-			
+
 			rs.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -173,36 +172,23 @@ public class DBRequest extends DBConnection {
 		return code;
 	}
 
-	public Dosis addDosis(int idUser, int idMed, String cantidad,String frecuencia,
-			String fecha) {
+	public Dosis addDosis(int idUser, int idMed, String cantidad,
+			String frecuencia, String fecha) {
 		Dosis d = null;
 		try {
 			DBConnection.crearConexion();
 			String q = "INSERT INTO Dosis" + "(ID_USER,ID_MED,"
-					+ "CANTIDAD,FRECUENCIA,fecha,tomado) " + "VALUES ('" + idUser
-					+ "','" + idMed + "','" + cantidad + "','" + frecuencia + "','" + fecha
-					+ "','false')";
+					+ "CANTIDAD,FRECUENCIA,fecha,tomado) " + "VALUES ('"
+					+ idUser + "','" + idMed + "','" + cantidad + "','"
+					+ frecuencia + "','" + fecha + "','false')";
 			con.executeUpdate(q);
-			d=new Dosis (cantidad,frecuencia,fecha,"false");
+			d = new Dosis(cantidad, frecuencia, fecha, "false");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
 			cerrarConexion();
 		}
 		return d;
-	}
-
-	public void tomarDosis(Long id_usuario, Long id_med) {
-		try {
-			DBConnection.crearConexion();
-			String q = "update dosis set tomado=true where id_user= '"
-					+ id_usuario + "' and id_med= '" + id_med + "'";
-			ResultSet rs = con.executeQuery(q);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			cerrarConexion();
-		}
 	}
 
 	public boolean existUser(String nombreUsuario) {
@@ -220,5 +206,18 @@ public class DBRequest extends DBConnection {
 		return false;
 	}
 
+	public void tomarDosis(int iduser, String fechaTomada, String cantidad) {
+		try {
+			DBConnection.crearConexion();
+			String q = "update Dosis set tomado='true' where id_user= '"
+					+ iduser + "' and fecha='" + fechaTomada
+					+ "' and cantidad='" + cantidad + "'";
+			con.executeUpdate(q);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			cerrarConexion();
+		}
+	}
 
 }

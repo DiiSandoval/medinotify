@@ -4,18 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.medinotify.R;
-import com.medinotify.R.id;
-import com.medinotify.R.layout;
-import com.medinotify.R.menu;
-import com.medinotify.model.Dosis;
-import com.medinotify.model.Medicina;
-import com.medinotify.model.Session;
-import com.medinotify.utility.ExpandableListAdapter;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,13 +14,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.os.Build;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.medinotify.R;
+import com.medinotify.business.Business;
+import com.medinotify.business.BusinessImpl;
+import com.medinotify.model.Dosis;
+import com.medinotify.model.Medicina;
+import com.medinotify.model.Session;
+import com.medinotify.utility.ExpandableListAdapter;
 
 public class DiaActivity extends Activity {
 	private String date_month_year;
@@ -41,6 +39,8 @@ public class DiaActivity extends Activity {
 	ExpandableListView expListView;
 	List<String> listDataHeader;
 	HashMap<String, List<String>> listDataChild;
+	String fechaTomada;
+	Business business = new BusinessImpl();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,12 +109,26 @@ public class DiaActivity extends Activity {
 				// TODO Auto-generated method stub
 				Toast.makeText(
 						getApplicationContext(),
-						listDataHeader.get(groupPosition)
+						"Has tomado "
+								+ listDataHeader.get(groupPosition)
 								+ " : "
 								+ listDataChild.get(
 										listDataHeader.get(groupPosition)).get(
 										childPosition), Toast.LENGTH_SHORT)
 						.show();
+
+				business.tomarDosis(Session.getInstance().getUsuarioActual()
+						.getId(), fechaTomada,
+						listDataChild.get(listDataHeader.get(groupPosition))
+								.get(childPosition));
+				
+				List<Dosis> dosis = business.getAllDosis(Session.getInstance().getUsuarioActual().getId());
+				Session.getInstance().getUsuarioActual().setDosisAlmacenadas(dosis);
+				
+
+				Intent intent = new Intent(DiaActivity.this,
+						CalendarioActivity.class);
+				startActivity(intent);
 				return false;
 			}
 		});
@@ -209,9 +223,8 @@ public class DiaActivity extends Activity {
 				String fecha = dosis2.getFecha();
 				if (dosis2.getFrecuencia().equalsIgnoreCase(frecuencia)
 						&& dosis2.getTomado().equals("false")
-						&& fecha.equals(
-								cambiarFormatoFecha(formatofecha))) {
-					vacio=false;
+						&& fecha.equals(cambiarFormatoFecha(formatofecha))) {
+					vacio = false;
 					Medicina med = Session.getInstance().getMedicinaById(
 							dosis2.getId_med());
 					if (med != null)
@@ -219,12 +232,11 @@ public class DiaActivity extends Activity {
 								+ med.getFuncion() + " - Cantidad:"
 								+ dosis2.getCantidad());
 				}
-				
-				
+
 			}
-			if(vacio)
+			if (vacio)
 				medsMorning.add("No tienes nada que tomar :)");
-			
+
 		} else
 			medsMorning.add("No tienes nada que tomar :)");
 	}
@@ -232,8 +244,8 @@ public class DiaActivity extends Activity {
 	private String cambiarFormatoFecha(String formatofecha) {
 		String[] parts = formatofecha.split("-");
 		String mes = getMes(parts[1]);
-		String result = parts[0] + "/" + mes + "/" + parts[2]+ " ";
-		return result;
+		fechaTomada = parts[0] + "/" + mes + "/" + parts[2] + " ";
+		return fechaTomada;
 	}
 
 	private String getMes(String string) {

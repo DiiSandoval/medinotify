@@ -1,17 +1,6 @@
 package com.medinotify.activity;
 
-import com.medinotify.R;
-import com.medinotify.R.id;
-import com.medinotify.R.layout;
-import com.medinotify.R.menu;
-import com.medinotify.activity.inutil.CalendarActivity;
-import com.medinotify.business.Business;
-import com.medinotify.business.BusinessImpl;
-import com.medinotify.model.Session;
-import com.medinotify.model.Usuario;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,13 +8,18 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
+
+import com.medinotify.R;
+import com.medinotify.business.Business;
+import com.medinotify.business.BusinessImpl;
+import com.medinotify.model.Session;
+import com.medinotify.model.Usuario;
 
 public class RegistroActivity extends Activity {
 

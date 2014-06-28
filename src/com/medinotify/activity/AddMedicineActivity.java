@@ -1,4 +1,4 @@
-package com.medinotify.activity.calendario;
+package com.medinotify.activity;
 
 import java.util.List;
 
@@ -15,8 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.medinotify.R;
-import com.medinotify.activity.ListMedicamentosActivity;
-import com.medinotify.activity.NewDosisActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.Medicina;

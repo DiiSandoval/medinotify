@@ -8,7 +8,6 @@ import com.medinotify.R;
 import com.medinotify.R.id;
 import com.medinotify.R.layout;
 import com.medinotify.R.menu;
-import com.medinotify.activity.calendario.AddMedicineActivity;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
 import com.medinotify.utility.ExpandableListAdapter;

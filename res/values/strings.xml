@@ -133,5 +133,6 @@
     <string name="title_activity_list_medicamentos">ListMedicamentosActivity</string>
     <string name="aceptarnewdosis">Agregar Dosis</string>
     <string name="title_activity_dia">DiaActivity</string>
+    <string name="yalotome">Seleccione la dosis que ya has tomado:</string>
 
 </resources>

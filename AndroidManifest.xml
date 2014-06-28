@@ -103,7 +103,7 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.medinotify.activity.calendario.AddMedicineActivity"
+            android:name="com.medinotify.activity.AddMedicineActivity"
             android:label="@string/title_activity_add_medicine"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>

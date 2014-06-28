@@ -3,21 +3,7 @@ package com.medinotify.activity;
 import java.util.Calendar;
 import java.util.List;
 
-import com.medinotify.R;
-import com.medinotify.R.id;
-import com.medinotify.R.layout;
-import com.medinotify.R.menu;
-import com.medinotify.activity.inutil.DosisGridActivity;
-import com.medinotify.activity.inutil.MediListActivity;
-import com.medinotify.business.Business;
-import com.medinotify.business.BusinessImpl;
-import com.medinotify.model.Dosis;
-import com.medinotify.model.Medicina;
-import com.medinotify.model.Session;
-import com.medinotify.model.Usuario;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -27,17 +13,22 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Build;
-import android.preference.EditTextPreference;
+
+import com.medinotify.R;
+import com.medinotify.business.Business;
+import com.medinotify.business.BusinessImpl;
+import com.medinotify.model.Dosis;
+import com.medinotify.model.Medicina;
+import com.medinotify.model.Session;
+import com.medinotify.model.Usuario;
 
 public class NewDosisActivity extends Activity {
 	private Button buttonEscogeMedicamento;

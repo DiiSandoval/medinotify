@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.service.textservice.SpellCheckerService.Session;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,10 +15,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.medinotify.R;
-import com.medinotify.activity.inutil.CalendarActivity;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
-import com.medinotify.model.*;
+import com.medinotify.model.Dosis;
+import com.medinotify.model.Medicina;
+import com.medinotify.model.Usuario;
 
 public class LoginActivity extends Activity {
 
@@ -74,9 +74,9 @@ public class LoginActivity extends Activity {
 				passwordUser.getText().toString());
 
 		if (usuario != null) {
+			List<Medicina> meds = business.getAllMedicinas(usuario.getId());
 			
 			List<Dosis> dosis = business.getAllDosis(usuario.getId());
-			List<Medicina> meds = business.getAllMedicinas(usuario.getId());
 			com.medinotify.model.Session.getInstance()
 			.setMedicinas(meds);
 			usuario.setDosisAlmacenadas(dosis);

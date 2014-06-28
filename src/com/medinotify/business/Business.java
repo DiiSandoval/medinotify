@@ -23,4 +23,6 @@ public interface Business {
 			String fecha);
 
 	public List<Dosis> getAllDosis(int idUser);
+
+	public void tomarDosis(int iduser,String fechaTomada, String dosisString);
 }
