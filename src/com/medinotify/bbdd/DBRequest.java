@@ -57,17 +57,20 @@ public class DBRequest extends DBConnection {
 		return medicinas;
 	}
 
-	public static List<Dosis> getAllDosis(Long idUsuario) {
+	public static List<Dosis> getAllDosis(int idUser) {
 		List<Dosis> dosis = null;
+		Dosis d = null;
 		try {
 			DBConnection.crearConexion();
-			String q = "SELECT * from dosis where idUsuario = '" + idUsuario
+			String q = "SELECT * from Dosis where id_user = '" + idUser
 					+ "'";
 			ResultSet rs = con.executeQuery(q);
 			dosis = new ArrayList<Dosis>();
 			while (rs.next()) {
-				dosis.add(new Dosis(rs.getString("cantidad"), rs.getString("frecuencia"), rs
-						.getString("fecha"), rs.getString("tomado")));
+				d = new Dosis(rs.getString("cantidad"), rs.getString("frecuencia"), rs
+						.getString("fecha"), rs.getString("tomado"));
+				d.setId_med(rs.getInt("id_med"));
+				dosis.add(d);
 			}
 			rs.close();
 		} catch (Exception e) {

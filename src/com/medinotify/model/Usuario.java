@@ -1,5 +1,7 @@
 package com.medinotify.model;
 
+import java.util.List;
+
 
 public class Usuario {
 
@@ -19,7 +21,16 @@ public class Usuario {
 	private String fechaNacimiento;
 	private String email;
 	private String password;
+	private List<Dosis> dosisAlmacenadas;
 	
+	public List<Dosis> getDosisAlmacenadas() {
+		return dosisAlmacenadas;
+	}
+
+	public void setDosisAlmacenadas(List<Dosis> dosisAlmacenadas) {
+		this.dosisAlmacenadas = dosisAlmacenadas;
+	}
+
 	public Usuario(String nombreUsuario, String nombre, String apellidos,
 			String sexo, String fechaNacimiento, String email, String password) {
 		super();

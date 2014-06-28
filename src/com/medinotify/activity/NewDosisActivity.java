@@ -106,13 +106,18 @@ public class NewDosisActivity extends Activity {
 							.getSelectedItem().toString(), spFrecuencia
 							.getSelectedItem().toString(), editFechaInicio
 							.getText().toString());
-					
+					Session.getInstance()
+							.getUsuarioActual()
+							.setDosisAlmacenadas(
+									business.getAllDosis(Session.getInstance()
+											.getUsuarioActual().getId()));
 					Intent intent = new Intent(NewDosisActivity.this,
 							CalendarioActivity.class);
 					startActivity(intent);
 
 				} else
-					Toast.makeText(getApplicationContext(),
+					Toast.makeText(
+							getApplicationContext(),
 							"No tienes ninguna medicina y/o fecha seleccionada",
 							Toast.LENGTH_SHORT).show();
 

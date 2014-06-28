@@ -6,6 +6,15 @@ import java.util.List;
 public class Session {
 	private static Session INSTANCE = null;
 	private Usuario usuarioActual;
+	private String day_month_year;
+	public String getDay_month_year() {
+		return day_month_year;
+	}
+
+	public void setDay_month_year(String day_month_year) {
+		this.day_month_year = day_month_year;
+	}
+
 	private List<Medicina> medicinas;
 	private Medicina medicinaEscogida;
 
@@ -54,6 +63,13 @@ public class Session {
 	public Medicina getMedicinaByNombre(String nombre){
 		for (Medicina med : getInstance().getMedicinas()) {
 			if(med.getNombre().equalsIgnoreCase(nombre))
+				return med;
+		}
+		return null;
+	}
+	public Medicina getMedicinaById(int id){
+		for (Medicina med : getInstance().getMedicinas()) {
+			if(med.getId()==id)
 				return med;
 		}
 		return null;

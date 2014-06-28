@@ -8,6 +8,19 @@ public class Dosis {
 	private String frecuencia;
 	private String fecha;
 	private String tomado;
+	private int id_med;
+
+	public int getId_med() {
+		return id_med;
+	}
+
+
+
+	public void setId_med(int id_med) {
+		this.id_med = id_med;
+	}
+
+
 
 	public Dosis(String cantidad,
 			String frecuencia, String fecha,String tomado) {

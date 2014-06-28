@@ -13,8 +13,8 @@ import com.medinotify.R;
 import com.medinotify.R.id;
 import com.medinotify.R.layout;
 import com.medinotify.R.menu;
-import com.medinotify.activity.calendario.DayActivity;
 import com.medinotify.activity.inutil.CalendarActivity;
+import com.medinotify.activity.inutil.DayActivity;
 import com.medinotify.activity.inutil.DosisGridActivity;
 import com.medinotify.activity.inutil.CalendarActivity.GridCellAdapter;
 import com.medinotify.model.Session;
@@ -386,6 +386,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 			public void onClick(View view) {
 				String date_month_year = (String) view.getTag();
 				selectedDayMonthYearButton.setText("Día: " + date_month_year);
+				Session.getInstance().setDay_month_year(date_month_year);
 				showDayDosis(date_month_year);
 				Log.e("Selected date", date_month_year);
 				try {
@@ -417,8 +418,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 
 
 		private void showDayDosis(String date_month_year) {
-			Intent intent = new Intent(CalendarioActivity.this, DayActivity.class);
-			intent.putExtra("date_month_year", date_month_year);
+			Intent intent = new Intent(CalendarioActivity.this, DiaActivity.class);
 			startActivity(intent);
 		}
 

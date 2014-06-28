@@ -21,4 +21,6 @@ public interface Business {
 
 	public Dosis addDosis(int idUser, int idMed, String cantidad, String frecuencia,
 			String fecha);
+
+	public List<Dosis> getAllDosis(int idUser);
 }

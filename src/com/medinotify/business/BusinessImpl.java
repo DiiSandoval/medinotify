@@ -50,6 +50,11 @@ public class BusinessImpl implements Business {
 		// TODO Auto-generated method stub
 		return new DBRequest().getAllMedicines(idUser);
 	}
+	@Override
+	public List<Dosis> getAllDosis(int idUser) {
+		// TODO Auto-generated method stub
+		return new DBRequest().getAllDosis(idUser);
+	}
 
 	@Override
 	public Medicina addMedicine(int idUser, String nombre, String funcion,
@@ -72,9 +77,6 @@ public class BusinessImpl implements Business {
 				fecha);
 	}
 
-	private boolean isFechaCorrecta(String fecha) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 }

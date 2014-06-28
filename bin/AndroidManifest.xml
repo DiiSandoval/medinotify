@@ -47,7 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.medinotify.activity.inutil.NextActivity"
@@ -86,7 +86,7 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         </activity>
         <activity
-            android:name="com.medinotify.activity.calendario.DayActivity"
+            android:name="com.medinotify.activity.inutil.DayActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
@@ -122,6 +122,10 @@
         <activity
             android:name="com.medinotify.activity.ListMedicamentosActivity"
             android:label="@string/title_activity_list_medicamentos" >
+        </activity>
+        <activity
+            android:name="com.medinotify.activity.DiaActivity"
+            android:label="@string/title_activity_dia" >
         </activity>
     </application>
 

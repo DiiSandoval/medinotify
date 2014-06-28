@@ -155,22 +155,24 @@ public final class R {
         public static final int activity_calendar=0x7f030001;
         public static final int activity_calendario=0x7f030002;
         public static final int activity_day=0x7f030003;
-        public static final int activity_dosis_grid=0x7f030004;
-        public static final int activity_list_medicamentos=0x7f030005;
-        public static final int activity_login=0x7f030006;
-        public static final int activity_map=0x7f030007;
-        public static final int activity_medi_list=0x7f030008;
-        public static final int activity_new_dosis=0x7f030009;
-        public static final int activity_next=0x7f03000a;
-        public static final int activity_register=0x7f03000b;
-        public static final int activity_registro=0x7f03000c;
-        public static final int fragment_calendario=0x7f03000d;
-        public static final int fragment_list_medicamentos=0x7f03000e;
-        public static final int fragment_new_dosis=0x7f03000f;
-        public static final int fragment_registro=0x7f030010;
-        public static final int list_group=0x7f030011;
-        public static final int list_item=0x7f030012;
-        public static final int screen_gridcell=0x7f030013;
+        public static final int activity_dia=0x7f030004;
+        public static final int activity_dosis_grid=0x7f030005;
+        public static final int activity_list_medicamentos=0x7f030006;
+        public static final int activity_login=0x7f030007;
+        public static final int activity_map=0x7f030008;
+        public static final int activity_medi_list=0x7f030009;
+        public static final int activity_new_dosis=0x7f03000a;
+        public static final int activity_next=0x7f03000b;
+        public static final int activity_register=0x7f03000c;
+        public static final int activity_registro=0x7f03000d;
+        public static final int fragment_calendario=0x7f03000e;
+        public static final int fragment_dia=0x7f03000f;
+        public static final int fragment_list_medicamentos=0x7f030010;
+        public static final int fragment_new_dosis=0x7f030011;
+        public static final int fragment_registro=0x7f030012;
+        public static final int list_group=0x7f030013;
+        public static final int list_item=0x7f030014;
+        public static final int screen_gridcell=0x7f030015;
     }
     public static final class menu {
         public static final int add_medicine=0x7f090000;
@@ -179,16 +181,17 @@ public final class R {
         public static final int calendary_dialog=0x7f090003;
         public static final int choose_medicine=0x7f090004;
         public static final int day=0x7f090005;
-        public static final int dosis_grid=0x7f090006;
-        public static final int list_medicamentos=0x7f090007;
-        public static final int login=0x7f090008;
-        public static final int map=0x7f090009;
-        public static final int medi_choose=0x7f09000a;
-        public static final int new_dosis=0x7f09000b;
-        public static final int next=0x7f09000c;
-        public static final int register=0x7f09000d;
-        public static final int registro=0x7f09000e;
-        public static final int user=0x7f09000f;
+        public static final int dia=0x7f090006;
+        public static final int dosis_grid=0x7f090007;
+        public static final int list_medicamentos=0x7f090008;
+        public static final int login=0x7f090009;
+        public static final int map=0x7f09000a;
+        public static final int medi_choose=0x7f09000b;
+        public static final int new_dosis=0x7f09000c;
+        public static final int next=0x7f09000d;
+        public static final int register=0x7f09000e;
+        public static final int registro=0x7f09000f;
+        public static final int user=0x7f090010;
     }
     public static final class string {
         public static final int Mas=0x7f060027;
@@ -261,6 +264,7 @@ public final class R {
         public static final int title_activity_calendary=0x7f060035;
         public static final int title_activity_calendary_dialog=0x7f060036;
         public static final int title_activity_day=0x7f060038;
+        public static final int title_activity_dia=0x7f060051;
         public static final int title_activity_dosis=0x7f060026;
         public static final int title_activity_dosis_grid=0x7f060039;
         public static final int title_activity_list_medicamentos=0x7f06004f;

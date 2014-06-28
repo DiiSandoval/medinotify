@@ -1,5 +1,7 @@
 package com.medinotify.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -72,8 +74,15 @@ public class LoginActivity extends Activity {
 				passwordUser.getText().toString());
 
 		if (usuario != null) {
+			
+			List<Dosis> dosis = business.getAllDosis(usuario.getId());
+			List<Medicina> meds = business.getAllMedicinas(usuario.getId());
 			com.medinotify.model.Session.getInstance()
-					.setUsuarioActual(usuario);
+			.setMedicinas(meds);
+			usuario.setDosisAlmacenadas(dosis);
+			com.medinotify.model.Session.getInstance()
+			.setUsuarioActual(usuario);
+			
 			Intent intent = new Intent(LoginActivity.this,
 					CalendarioActivity.class);
 			startActivity(intent);
