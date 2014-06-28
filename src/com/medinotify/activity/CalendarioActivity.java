@@ -14,8 +14,8 @@ import com.medinotify.R.id;
 import com.medinotify.R.layout;
 import com.medinotify.R.menu;
 import com.medinotify.activity.calendario.DayActivity;
-import com.medinotify.activity.calendario.DosisGridActivity;
 import com.medinotify.activity.inutil.CalendarActivity;
+import com.medinotify.activity.inutil.DosisGridActivity;
 import com.medinotify.activity.inutil.CalendarActivity.GridCellAdapter;
 import com.medinotify.model.Session;
 import com.medinotify.utility.LaunchActivity;
@@ -434,7 +434,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 		    switch (item.getItemId()) {
 		    case R.id.itemAddCalendar:{
 		    	Intent intent = new Intent(CalendarioActivity.this,
-						DosisGridActivity.class);
+						NewDosisActivity.class);
 				intent.putExtra("idUser", idUser);
 				startActivity(intent);
 				

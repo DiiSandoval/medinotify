@@ -1,6 +1,9 @@
 package com.medinotify.business;
 
+import java.util.List;
+
 import com.medinotify.bbdd.DBRequest;
+import com.medinotify.model.Medicina;
 import com.medinotify.model.Usuario;
 
 public class BusinessImpl implements Business {
@@ -41,6 +44,12 @@ public class BusinessImpl implements Business {
 
 	private String getSexo(boolean hombre) {
 		return (!hombre) ? "M" : "H";
+	}
+
+	@Override
+	public List<Medicina> getAllMedicinas(int idUser) {
+		// TODO Auto-generated method stub
+		return new DBRequest().getAllMedicines(idUser);
 	}
 	
 	

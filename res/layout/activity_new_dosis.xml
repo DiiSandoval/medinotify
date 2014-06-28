@@ -2,41 +2,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3EAFFF"
     android:columnCount="2"
     android:orientation="horizontal"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:rowCount="8"
+    android:rowCount="12"
     android:useDefaultMargins="true"
-    tools:context=".DosisGridActivity"
-    android:background="#3EAFFF" >
+    tools:context=".DosisGridActivity" >
 
     <TextView
         android:id="@+id/textViewNuevaDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
-        android:layout_row="0"
         android:layout_columnSpan="2"
         android:layout_gravity="center_horizontal"
+        android:layout_row="0"
         android:text="@string/nuevadosis"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/buttonEscogerMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
-        android:layout_row="1"
         android:layout_columnSpan="2"
         android:layout_gravity="center_horizontal"
+        android:layout_row="1"
+        android:text="@string/nuevomedicamento"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:text="@string/nuevomedicamento" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewTacaMedicamento"
@@ -45,87 +45,81 @@
         android:layout_column="0"
         android:layout_row="2"
         android:text="Medicamento"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewCantidadGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
-        android:layout_row="3"
+        android:layout_row="7"
         android:text="@string/cantidad"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+        android:textStyle="bold" />
+
     <Spinner
         android:id="@+id/spinnerCantidadGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:layout_row="3" />
+        android:layout_row="7"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textViewFrecuenciaGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
-        android:layout_row="4"
+        android:layout_row="8"
         android:text="@string/frecuencia"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+        android:textStyle="bold" />
+
     <Spinner
         android:id="@+id/spinnerFrecuenciaGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:layout_row="4" />
-    
+        android:layout_row="8"
+        android:textColor="@color/white" />
+
     <TextView
         android:id="@+id/textViewFechaInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
-        android:layout_row="5"
+        android:layout_row="9"
         android:text="@string/fecha_inicio"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-    
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textViewFechaInicioChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="1"
-        android:layout_row="5"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-   
-    
-    <TextView
-        android:id="@+id/textViewFechaTerminoChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="1"
-        android:layout_row="6"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_row="9"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white" />
 
     <Space
         android:layout_width="1dp"
         android:layout_height="15dp" />
 
-    
+    <TextView
+        android:id="@+id/textViewNombreMedicamento"
+        android:layout_width="266dp"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_row="3"
+        android:text="@string/noescoges" />
 
 </GridLayout>

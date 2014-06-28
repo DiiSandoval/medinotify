@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.medinotify.model.*;
+import com.medinotify.model.Dosis;
+import com.medinotify.model.Medicina;
+import com.medinotify.model.Usuario;
 
 public class DBRequest extends DBConnection {
 
@@ -22,6 +24,7 @@ public class DBRequest extends DBConnection {
 						rs.getString("nombre"), rs.getString("apellidos"),
 						rs.getString("sexo"), rs.getString("fechaNacimiento"),
 						rs.getString("email"), rs.getString("password"));
+				usuario.setId(rs.getInt("id"));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -32,10 +35,10 @@ public class DBRequest extends DBConnection {
 		return usuario;
 	}
 
-	public static List<Medicina> getAllMedicines(Long idUsuario) {
+	public static List<Medicina> getAllMedicines(int idUser) {
 		List<Medicina> medicinas = null;
-		String q = "SELECT m.* from medicina m, botiquin b, usuario u  where u.id=b.id_user and m.id=b.id_med and u.id = '"
-				+ idUsuario + "'";
+		String q = "SELECT m.* from Medicina m, Botiquin b, Usuario u  where u.id=b.id_user and m.id=b.id_med and u.id = "
+				+ idUser ;
 		try {
 			DBConnection.crearConexion();
 			ResultSet rs = con.executeQuery(q);
@@ -53,7 +56,7 @@ public class DBRequest extends DBConnection {
 		}
 		return medicinas;
 	}
-
+	
 	public static List<Dosis> getAllDosis(Long idUsuario) {
 		List<Dosis> dosis = null;
 		try {

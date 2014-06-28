@@ -31,7 +31,6 @@ import android.widget.TextView;
 
 import com.medinotify.R;
 import com.medinotify.activity.calendario.DayActivity;
-import com.medinotify.activity.calendario.DosisGridActivity;
 import com.medinotify.utility.LaunchActivity;
 
 public class CalendarActivity extends Activity implements OnClickListener {

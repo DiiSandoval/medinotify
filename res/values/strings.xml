@@ -111,8 +111,7 @@
     <string name="leftmonth">Left Month</string>
     <string name="rightmonth">Right Month</string>
     <string name="calheader">Calendar Header</string>
-    <string name="fecha_inicio">Fecha de inicio:</string>
-    <string name="fecha_termino">Fecha de término:</string>
+    <string name="fecha_inicio">Fecha:</string>
     <string name="repetirGrid">Repetir cada:</string>
     <string name="comentarios">Comentarios:</string>
     <string name="funcion">Funcion:</string>
@@ -129,5 +128,8 @@
 
     <string name="title_activity_registro">RegistroActivity</string>
     <string name="title_activity_calendario">CalendarioActivity</string>
+    <string name="title_activity_new_dosis">NewDosisActivity</string>
+    <string name="noescoges">Aun no has escogido medicamento.</string>
+    <string name="title_activity_list_medicamentos">ListMedicamentosActivity</string>
 
 </resources>

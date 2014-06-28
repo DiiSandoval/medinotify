@@ -1,4 +1,4 @@
-package com.medinotify.activity.calendario;
+package com.medinotify.activity.inutil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +18,7 @@ import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
 import com.medinotify.R;
+import com.medinotify.activity.calendario.AddMedicineActivity;
 import com.medinotify.utility.ExpandableListAdapter;
 
 public class MediListActivity extends Activity {
