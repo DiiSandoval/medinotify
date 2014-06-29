@@ -115,8 +115,43 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		if (v == prevMonth) {
+			if (month <= 1) {
+				month = 12;
+				year--;
+			} else {
+				month--;
+			}
+			Log.d(tag, "Setting Prev Month in GridCellAdapter: " + "Month: "
+					+ month + " Year: " + year);
+			setGridCellAdapterToDate(month, year);
+		}
+		if (v == nextMonth) {
+			if (month > 11) {
+				month = 1;
+				year++;
+			} else {
+				month++;
+			}
+			Log.d(tag, "Setting Next Month in GridCellAdapter: " + "Month: "
+					+ month + " Year: " + year);
+			setGridCellAdapterToDate(month, year);
+		}
 		
+	}
+	/**
+	 * 
+	 * @param month
+	 * @param year
+	 */
+	private void setGridCellAdapterToDate(int month, int year) {
+		adapter = new GridCellAdapter(getApplicationContext(),
+				R.id.calendar_day_gridcell, month, year);
+		_calendar.set(year, month - 1, _calendar.get(Calendar.DAY_OF_MONTH));
+		currentMonth.setText(DateFormat.format(dateTemplate,
+				_calendar.getTime()));
+		adapter.notifyDataSetChanged();
+		calendarView.setAdapter(adapter);
 	}
 
 	// Inner Class
