@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
+import com.medinotify.utility.LaunchActivity;
 
 public class AddMedicineActivity extends Activity {
 
@@ -89,5 +91,19 @@ public class AddMedicineActivity extends Activity {
 			Toast.makeText(getApplicationContext(), "Datos incompletos",
 					Toast.LENGTH_SHORT).show();
 
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+	    switch (item.getItemId()) {
+		case R.id.CerrarSesion:
+			Session.getInstance().setUsuarioActual(null);
+			LaunchActivity.launchLoginActivity(this);
+			return true;
+			
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

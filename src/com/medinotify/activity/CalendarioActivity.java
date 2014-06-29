@@ -426,7 +426,6 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 		    case R.id.itemAddCalendar:{
 		    	Intent intent = new Intent(CalendarioActivity.this,
 						NewDosisActivity.class);
-				intent.putExtra("idUser", idUser);
 				startActivity(intent);
 				
 		        return true;

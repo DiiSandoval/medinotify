@@ -29,6 +29,7 @@ import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
 import com.medinotify.model.Usuario;
+import com.medinotify.utility.LaunchActivity;
 
 public class NewDosisActivity extends Activity {
 	private Button buttonEscogeMedicamento;
@@ -116,17 +117,6 @@ public class NewDosisActivity extends Activity {
 		});
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
@@ -245,5 +235,16 @@ public class NewDosisActivity extends Activity {
 		getMenuInflater().inflate(R.menu.dosis_grid, menu);
 		return true;
 	}
-
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+	    switch (item.getItemId()) {
+		case R.id.CerrarSesion:
+			Session.getInstance().setUsuarioActual(null);
+			LaunchActivity.launchLoginActivity(this);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 }

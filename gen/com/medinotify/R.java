@@ -76,10 +76,8 @@ public final class R {
         public static final int topbar_blue=0x7f020015;
     }
     public static final class id {
-        public static final int CerrarSesion=0x7f0a0040;
-        public static final int MnuOpc1=0x7f0a0042;
+        public static final int CerrarSesion=0x7f0a003e;
         public static final int TableLayout01=0x7f0a0025;
-        public static final int action_settings=0x7f0a003e;
         public static final int btAceptarNewMedicine=0x7f0a000a;
         public static final int btAddDosis=0x7f0a0023;
         public static final int buttonAceptarRegister=0x7f0a0037;
@@ -115,7 +113,7 @@ public final class R {
         public static final int expandableListViewMedicines=0x7f0a0015;
         public static final int expandableListViewMorning=0x7f0a0013;
         public static final int itemAddCalendar=0x7f0a003f;
-        public static final int itemAddMediChoose=0x7f0a0041;
+        public static final int itemAddMediChoose=0x7f0a0040;
         public static final int lblListHeader=0x7f0a003a;
         public static final int lblListItem=0x7f0a003b;
         public static final int map=0x7f0a001c;
@@ -174,13 +172,10 @@ public final class R {
         public static final int dosis_grid=0x7f090007;
         public static final int list_medicamentos=0x7f090008;
         public static final int login=0x7f090009;
-        public static final int map=0x7f09000a;
-        public static final int medi_choose=0x7f09000b;
-        public static final int new_dosis=0x7f09000c;
-        public static final int next=0x7f09000d;
-        public static final int register=0x7f09000e;
-        public static final int registro=0x7f09000f;
-        public static final int user=0x7f090010;
+        public static final int medi_choose=0x7f09000a;
+        public static final int new_dosis=0x7f09000b;
+        public static final int registro=0x7f09000c;
+        public static final int user=0x7f09000d;
     }
     public static final class string {
         public static final int Mas=0x7f060027;
