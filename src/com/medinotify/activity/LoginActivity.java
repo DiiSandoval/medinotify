@@ -3,7 +3,6 @@ package com.medinotify.activity;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -20,6 +19,7 @@ import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Usuario;
+import com.medinotify.utility.LaunchActivity;
 
 public class LoginActivity extends Activity {
 
@@ -27,7 +27,6 @@ public class LoginActivity extends Activity {
 	private EditText passwordUser = null;
 	private Button buttonAccept = null;
 	private Button buttonRegister = null;
-	// private ServiceFactory serviceFactory = null;
 
 	private Business business = null;
 
@@ -57,19 +56,13 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// LaunchActivity.launchRegisterActivity(LoginActivity.this);
-				Intent intent = new Intent(LoginActivity.this,
-						RegistroActivity.class);
-				startActivity(intent);
+				LaunchActivity.launchRegisterActivity(LoginActivity.this);
 			}
 		});
 
 	}
 
 	private void login() {
-		// serviceFactory.getUserService().login(
-		// nameUser.getText().toString(),
-		// passwordUser.getText().toString());
 		Usuario usuario = business.login(nameUser.getText().toString(),
 				passwordUser.getText().toString());
 
@@ -83,9 +76,7 @@ public class LoginActivity extends Activity {
 			com.medinotify.model.Session.getInstance()
 			.setUsuarioActual(usuario);
 			
-			Intent intent = new Intent(LoginActivity.this,
-					CalendarioActivity.class);
-			startActivity(intent);
+			LaunchActivity.launchCalendarActivity(LoginActivity.this);
 			Toast.makeText(getApplicationContext(), "Login correcto como " + usuario.getNick(), Toast.LENGTH_SHORT)
 					.show();
 		} else {
@@ -101,14 +92,11 @@ public class LoginActivity extends Activity {
 		buttonRegister = (Button) findViewById(R.id.button_register);
 		business = new BusinessImpl();
 
-		// serviceFactory = new MySQLServiceFactory(this);
-
 		settings = getSharedPreferences("userNotyMedify", MODE_PRIVATE);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}

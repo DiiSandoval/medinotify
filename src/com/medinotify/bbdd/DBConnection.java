@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DBConnection {
 
-	static String host = "m1.infv.es"; // "10.0.2.2"; //Poner 10.0.0.2 cuando el// serv. MySQL es LocalHost
+	static String host = "m1.infv.es";
 	static String baseDatos = "MediNotify";
 	static String usuario = "diego";
 	static String password = "12345";

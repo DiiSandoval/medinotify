@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DayActivity"
+    tools:context=".MediListActivity"
     android:background="#3EAFFF" >
 
     <TextView
@@ -16,25 +16,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
         android:gravity="center_horizontal"
-        android:text="@string/yalotome"
+        android:text="@string/historial"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
         android:textStyle="bold" />
-
+    
     <ExpandableListView
-        android:id="@+id/expandableListViewMorning"
+        android:id="@+id/expandableListViewHistorial"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ExpandableListView>
-
-    <TextView
-        android:id="@+id/textViewDateDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text=""
-        android:textColor="@color/white"
-        android:layout_marginBottom="10sp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>

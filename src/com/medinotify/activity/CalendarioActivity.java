@@ -13,7 +13,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -47,7 +46,6 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 	private GridCellAdapter adapter;
 	private Calendar _calendar;
 	private int month, year;
-	private int idUser = 0;
 
 	private static final String dateTemplate = "MMMM yyyy";
 	@Override
@@ -57,18 +55,11 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 
 		getActionBar().setTitle("MediNotify");
 		
-		Bundle extras = getIntent().getExtras();
-		if (extras != null) {
-		    idUser = extras.getInt("idUser");
-		}
+		setSettings(getSharedPreferences("userNotyMedify", MODE_PRIVATE));
 		
-		settings = getSharedPreferences("userNotyMedify", MODE_PRIVATE);
-		
-		// _calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+1"));
 		_calendar = Calendar.getInstance();
-		// _calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT+1"),
-		// Locale.getDefault());
 		_calendar.setFirstDayOfWeek(Calendar.MONDAY);
+		
 		month = _calendar.get(Calendar.MONTH) + 1;
 		year = _calendar.get(Calendar.YEAR);
 		Log.d(tag, "Calendar Instance:= " + "Month: " + month + " " + "Year: "
@@ -90,7 +81,6 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 
 		calendarView = (GridView) this.findViewById(R.id.calendar);
 
-		// Initialised
 		adapter = new GridCellAdapter(getApplicationContext(),
 				R.id.calendar_day_gridcell, month, year);
 		adapter.notifyDataSetChanged();
@@ -154,7 +144,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 		calendarView.setAdapter(adapter);
 	}
 
-	// Inner Class
+	// Clase interna
 		public class GridCellAdapter extends BaseAdapter implements OnClickListener {
 			private static final String tag = "GridCellAdapter";
 			private final Context _context;
@@ -178,7 +168,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 			private final SimpleDateFormat dateFormatter = new SimpleDateFormat(
 					"dd-MMM-yyyy");
 
-			// Days in Current Month
+	
 			public GridCellAdapter(Context context, int textViewResourceId,
 					int month, int year) {
 				this._context = context;
@@ -187,19 +177,18 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 						+ "Year: " + year);
 				Calendar calendar = Calendar.getInstance();
 				calendar.setFirstDayOfWeek(Calendar.MONDAY);
-				// Calendar calendar = new
-				// GregorianCalendar(TimeZone.getTimeZone("GMT+1"),
-				// Locale.getDefault());
+				
+				
 				setCurrentDayOfMonth(calendar.get(Calendar.DAY_OF_MONTH));
 				setCurrentWeekDay(calendar.get(Calendar.DAY_OF_WEEK));
 				Log.d(tag, "New Calendar:= " + calendar.getTime().toString());
 				Log.d(tag, "CurrentDayOfWeek :" + getCurrentWeekDay());
 				Log.d(tag, "CurrentDayOfMonth :" + getCurrentDayOfMonth());
 
-				// Print Month
+				
 				printMonth(month, year);
 
-				// Find Number of Events
+				
 				eventsPerMonthMap = findNumberOfEventsPerMonth(year, month);
 			}
 
@@ -280,7 +269,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 				}
 
 				int currentWeekDay = cal.get(Calendar.DAY_OF_WEEK) - 1;
-				// trailingSpaces = currentWeekDay;
+				
 				int[] weekDaysToTraling = { 6, 0, 1, 2, 3, 4, 5 };
 				trailingSpaces = weekDaysToTraling[currentWeekDay];
 
@@ -295,7 +284,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 					else if (mm == 3)
 						++daysInPrevMonth;
 
-				// Trailing Month days
+				
 				for (int i = 0; i < trailingSpaces; i++) {
 					Log.d(tag,
 							"PREV MONTH:= "
@@ -316,7 +305,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 							+ prevYear);
 				}
 
-				// Current Month Days
+				
 				for (int i = 1; i <= daysInMonth; i++) {
 					Log.d(currentMonthName, String.valueOf(i) + " "
 							+ getMonthAsString(currentMonth) + " " + yy);
@@ -329,7 +318,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 					}
 				}
 
-				// Leading Month days
+				
 				for (int i = 0; i < list.size() % 7; i++) {
 					Log.d(tag, "NEXT MONTH:= " + getMonthAsString(nextMonth));
 					list.add(String.valueOf(i + 1) + "-GREY" + "-"
@@ -368,11 +357,11 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 					row = inflater.inflate(R.layout.screen_gridcell, parent, false);
 				}
 
-				// Get a reference to the Day gridcell
+				
 				gridcell = (Button) row.findViewById(R.id.calendar_day_gridcell);
 				gridcell.setOnClickListener(this);
 
-				// ACCOUNT FOR SPACING
+				
 
 				Log.d(tag, "Current Day: " + getCurrentDayOfMonth());
 				String[] day_color = list.get(position).split("-");
@@ -388,7 +377,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 					}
 				}
 
-				// Set the Day GridCell
+				
 				gridcell.setText(theday);
 				gridcell.setTag(theday + "-" + themonth + "-" + theyear);
 				Log.d(tag, "Setting GridCell " + theday + "-" + themonth + "-"
@@ -444,8 +433,7 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 
 
 		private void showDayDosis(String date_month_year) {
-			Intent intent = new Intent(CalendarioActivity.this, DiaActivity.class);
-			startActivity(intent);
+			LaunchActivity.launchDiaActivity(CalendarioActivity.this);
 		}
 
 		@Override
@@ -458,13 +446,13 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 		public boolean onOptionsItemSelected(MenuItem item) {
 			
 		    switch (item.getItemId()) {
-		    case R.id.itemAddCalendar:{
-		    	Intent intent = new Intent(CalendarioActivity.this,
-						NewDosisActivity.class);
-				startActivity(intent);
-				
+		    case R.id.itemHistorial:
+		    	LaunchActivity.launchHistorialActivity(CalendarioActivity.this);
 		        return true;
-		    }
+		    case R.id.itemAddCalendar:
+		    	LaunchActivity.launchNewDosisActivity(CalendarioActivity.this);
+		        return true;
+		    
 			case R.id.CerrarSesion:
 				Session.getInstance().setUsuarioActual(null);
 				LaunchActivity.launchLoginActivity(this);
@@ -472,6 +460,12 @@ public class CalendarioActivity extends Activity implements OnClickListener{
 			default:
 				return super.onOptionsItemSelected(item);
 			}
+		}
+		public SharedPreferences getSettings() {
+			return settings;
+		}
+		public void setSettings(SharedPreferences settings) {
+			this.settings = settings;
 		}
 	
 }

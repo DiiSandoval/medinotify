@@ -3,7 +3,6 @@ package com.medinotify.activity;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,7 +29,6 @@ public class AddMedicineActivity extends Activity {
 	private EditText txtComentarios = null;
 	private Spinner spinner = null;
 	private Business business = new BusinessImpl();
-	// private ServiceFactory serviceFactory = null;
 	SharedPreferences settings = null;
 
 	@Override
@@ -42,7 +40,6 @@ public class AddMedicineActivity extends Activity {
 		txtComentarios = (EditText) findViewById(R.id.editTextNewComentario);
 		spinner = (Spinner) findViewById(R.id.spinnerMetodo);
 		rellenaSpinner();
-		// serviceFactory = new MySQLServiceFactory(this);
 		settings = getSharedPreferences("userNotyMedify", MODE_PRIVATE);
 		btAccept = (Button) findViewById(R.id.btAceptarNewMedicine);
 		btAccept.setOnClickListener(new View.OnClickListener() {
@@ -57,25 +54,18 @@ public class AddMedicineActivity extends Activity {
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter
 				.createFromResource(this, R.array.metodoArray,
 						android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		spinner.setAdapter(adapter);
 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.add_medicine, menu);
 		return true;
 	}
 
 	public void pressAceptar() {
-		// serviceFactory.getMedicineService().anadirMedicina(String.valueOf(idUser),
-		// txtNombre.getText().toString(),
-		// txtFuncion.getText().toString(),
-		// txtComentarios.getText().toString());
 		Medicina med = business.addMedicine(Session.getInstance()
 				.getUsuarioActual().getId(), txtNombre.getText().toString(),
 				txtFuncion.getText().toString(), txtComentarios.getText()
@@ -84,9 +74,7 @@ public class AddMedicineActivity extends Activity {
 			List<Medicina> meds = business.getAllMedicinas(Session
 					.getInstance().getUsuarioActual().getId());
 			Session.getInstance().setMedicinas(meds);
-			Intent intent = new Intent(AddMedicineActivity.this,
-					ListMedicamentosActivity.class);
-			startActivity(intent);
+			LaunchActivity.launchListMedicamentosActivity(AddMedicineActivity.this);
 		} else
 			Toast.makeText(getApplicationContext(), "Datos incompletos",
 					Toast.LENGTH_SHORT).show();

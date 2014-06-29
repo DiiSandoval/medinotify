@@ -11,7 +11,7 @@
     android:background="#3EAFFF" >
 
     <TextView
-        android:id="@+id/textViewListMedicamentos"
+        android:id="@+id/textViewListHistorial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"

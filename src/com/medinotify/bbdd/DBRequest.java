@@ -152,26 +152,6 @@ public class DBRequest extends DBConnection {
 		}
 	}
 
-	private String getCode() {
-		String code = null;
-		try {
-			DBConnection.crearConexion();
-			String q = "select max id from medicina";
-			ResultSet rs = con.executeQuery(q);
-			while (rs.next()) {
-				code = rs.getString(1);
-			}
-			if (code != null) {
-				code = "MED" + code;
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			cerrarConexion();
-		}
-		return code;
-	}
-
 	public Dosis addDosis(int idUser, int idMed, String cantidad,
 			String frecuencia, String fecha) {
 		Dosis d = null;
@@ -196,8 +176,21 @@ public class DBRequest extends DBConnection {
 			DBConnection.crearConexion();
 			String q = "SELECT * from Usuario where nick= '" + nombreUsuario
 					+ "'";
-			int n = con.executeUpdate(q);
-			return n == 1;
+			
+			Usuario usuario = null;
+			ResultSet rs = con.executeQuery(q);
+			while (rs.next()) {
+				usuario = new Usuario(rs.getString("nick"),
+						rs.getString("nombre"), rs.getString("apellidos"),
+						rs.getString("sexo"), rs.getString("fechaNacimiento"),
+						rs.getString("email"), rs.getString("password"));
+				usuario.setId(rs.getInt("id"));
+			}
+			rs.close();
+			if(usuario==null)
+				return false;
+			return true;
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {

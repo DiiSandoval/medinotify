@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 import com.medinotify.R;
 import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
-import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
 import com.medinotify.model.Usuario;
@@ -68,7 +66,7 @@ public class NewDosisActivity extends Activity {
 		spFrecuencia = (Spinner) findViewById(R.id.spinnerFrecuenciaGrid);
 
 		editFechaInicio = (TextView) findViewById(R.id.textViewFechaInicioChange);
-		// editFechaInicio.setText(day + "-" + month + 1 + "-" + year);
+		
 		editFechaInicio.setText("Escoge fecha");
 		spCantidad = (Spinner) findViewById(R.id.spinnerMetodo);
 		editNombreMedicamento = (TextView) findViewById(R.id.textViewNombreMedicamento);
@@ -92,7 +90,7 @@ public class NewDosisActivity extends Activity {
 				if (Session.getInstance().getMedicinaEscogida() != null
 						&& !editFechaInicio.getText().toString()
 								.equals("Escoge fecha")) {
-					Dosis dosis = business.addDosis(Session.getInstance()
+					business.addDosis(Session.getInstance()
 							.getUsuarioActual().getId(), Session.getInstance()
 							.getMedicinaEscogida().getId(), spCantidad
 							.getSelectedItem().toString(), spFrecuencia
@@ -103,9 +101,7 @@ public class NewDosisActivity extends Activity {
 							.setDosisAlmacenadas(
 									business.getAllDosis(Session.getInstance()
 											.getUsuarioActual().getId()));
-					Intent intent = new Intent(NewDosisActivity.this,
-							CalendarioActivity.class);
-					startActivity(intent);
+					LaunchActivity.launchCalendarActivity(NewDosisActivity.this);
 
 				} else
 					Toast.makeText(
@@ -145,9 +141,7 @@ public class NewDosisActivity extends Activity {
 				if (user != null) {
 					List<Medicina> meds = business.getAllMedicinas(user.getId());
 					Session.getInstance().setMedicinas(meds);
-					Intent intent = new Intent(NewDosisActivity.this,
-							ListMedicamentosActivity.class);
-					startActivity(intent);
+					LaunchActivity.launchListMedicamentosActivity(NewDosisActivity.this);
 				}
 			}
 		});
@@ -158,7 +152,6 @@ public class NewDosisActivity extends Activity {
 		editFechaInicio.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// seleccionamos inicio
 				fechaSeleccionada = true;
 				showDateDialog();
 			}
@@ -171,24 +164,16 @@ public class NewDosisActivity extends Activity {
 	}
 
 	private void defineSpFrecuencia() {
-		// Create an ArrayAdapter using the string array and a default spinner
-		// layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.frecArray1, android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		spFrecuencia.setAdapter(adapter);
 	}
 
 	private void defineSpCantidad(int array) {
-		// Create an ArrayAdapter using the string array and a default spinner
-		// layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, array, android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		spCantidad.setAdapter(adapter);
 	}
 
@@ -202,7 +187,6 @@ public class NewDosisActivity extends Activity {
 		DatePickerDialog dialog = null;
 		switch (id) {
 		case DATE_DIALOG_ID: {
-			// set date picker as current date
 			dialog = new DatePickerDialog(this, datePickerListener, year,
 					month, day);
 		}
@@ -212,14 +196,13 @@ public class NewDosisActivity extends Activity {
 
 	private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
 
-		// when dialog box is closed, below method will be called.
 		public void onDateSet(DatePicker view, int selectedYear,
 				int selectedMonth, int selectedDay) {
 			year = selectedYear;
 			month = selectedMonth;
 			day = selectedDay;
 
-			// set selected date into textview
+		
 
 			if (fechaSeleccionada == true) {
 				editFechaInicio.setText(new StringBuilder().append(day)
@@ -231,7 +214,6 @@ public class NewDosisActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.dosis_grid, menu);
 		return true;
 	}

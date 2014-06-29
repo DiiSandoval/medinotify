@@ -4,26 +4,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.Toast;
-
 import com.medinotify.R;
+import com.medinotify.R.id;
+import com.medinotify.R.layout;
+import com.medinotify.R.menu;
+import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Session;
 import com.medinotify.utility.ExpandableListAdapter;
 import com.medinotify.utility.LaunchActivity;
 
-public class ListMedicamentosActivity extends Activity {
+import android.app.Activity;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.os.Build;
 
+public class HistorialActivity extends Activity {
 	ExpandableListAdapter listAdapter;
 	ExpandableListView expListView;
 	List<String> listDataHeader;
@@ -32,19 +40,17 @@ public class ListMedicamentosActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list_medicamentos);
+		setContentView(R.layout.activity_historial);
 
 		getActionBar().setTitle("MediNotify");
 
-		
 		expListView = (ExpandableListView) findViewById(R.id.expandableListViewHistorial);
 
-		
 		prepareListData();
 
 		listAdapter = new ExpandableListAdapter(this, listDataHeader,
 				listDataChild);
-		
+
 		expListView.setAdapter(listAdapter);
 
 		expListView.setOnGroupClickListener(new OnGroupClickListener() {
@@ -67,7 +73,6 @@ public class ListMedicamentosActivity extends Activity {
 			}
 		});
 
-
 		expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
 
 			@Override
@@ -85,26 +90,49 @@ public class ListMedicamentosActivity extends Activity {
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
 
-				Medicina med = Session.getInstance().getMedicinaByNombre(
-						listDataChild.get(listDataHeader.get(groupPosition))
-								.get(childPosition));
-				if (med != null) {
-					Session.getInstance().setMedicinaEscogida(med);
-					LaunchActivity.launchNewDosisActivity(ListMedicamentosActivity.this);
-
-				}
-
 				return false;
 			}
 		});
+	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		getMenuInflater().inflate(R.menu.historial, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_historial,
+					container, false);
+			return rootView;
+		}
 	}
 
 	private void prepareListData() {
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
-		listDataHeader.add("Pulse para desplegar la lista de medicamentos");
+		listDataHeader.add("Pulse para desplegar el historial");
 
 		List<String> medsTaca = new ArrayList<String>();
 		addMeds(medsTaca);
@@ -113,36 +141,20 @@ public class ListMedicamentosActivity extends Activity {
 	}
 
 	private void addMeds(List<String> medsMorning) {
-		List<Medicina> meds = Session.getInstance().getMedicinas();
-		if (meds != null && !meds.isEmpty())
-			for (Medicina medicina : meds)
-				medsMorning.add(medicina.getNombre());
+		List<Dosis> dos = Session.getInstance().getUsuarioActual()
+				.getDosisAlmacenadas();
+		
+		if (dos != null && !dos.isEmpty())
+			for (Dosis dosis : dos) {
+				if (dosis.getTomado().equals("true")){
+					Medicina m = Session.getInstance().getMedicinaById(
+							dosis.getId_med());
+					medsMorning.add(dosis.getFecha()+ ": Has tomado " + dosis.getCantidad()  + " unidades de " + m.getNombre() +  "."  );
+			  }
+			}
 		else
-			medsMorning.add("El usuario no tiene medicinas almacenadas");
+			medsMorning.add("Historial vacío");
 
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.list_medicamentos, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-
-		switch (item.getItemId()) {
-		case R.id.CerrarSesion:
-			Session.getInstance().setUsuarioActual(null);
-			LaunchActivity.launchLoginActivity(this);
-			return true;
-		case R.id.itemAddCalendar: {
-			LaunchActivity.launchAddMedicineActivity(ListMedicamentosActivity.this);
-			return true;
-		}
-		default:
-			return super.onOptionsItemSelected(item);
-		}
 	}
 
 }

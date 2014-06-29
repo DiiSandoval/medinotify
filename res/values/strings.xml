@@ -82,32 +82,11 @@
         <item>5 y &#188;</item>
         <item>5 y &#189;</item>
     </string-array>
-    <string-array name="cantIntArray">
-        <item>1 dosis</item>
-        <item>2 dosis</item>
-        <item>3 dosis</item>
-        <item>4 dosis</item>
-        <item>5 dosis</item>
-    </string-array>
-    <string-array name="repetirArray">
-        <item>dia</item>
-        <item>lunes</item>
-        <item>martes</item>
-        <item>miércoles</item>
-        <item>jueves</item>
-        <item>viernes</item>
-        <item>sábado</item>
-        <item>domingo</item>
-    </string-array>
 
-    <string name="title_activity_dosis_grid">DosisGridActivity</string>
-    <string name="diabetico">Diabetico:*</string>
     <string name="si">Si</string>
     <string name="no">No</string>
-    <string name="mapa">Mapa</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_medi_choose">MediChooseActivity</string>
     <string name="addbar">Add</string>
+    <string name="historial">Historial:</string>
     <string name="leftmonth">Left Month</string>
     <string name="rightmonth">Right Month</string>
     <string name="calheader">Calendar Header</string>
@@ -115,7 +94,6 @@
     <string name="repetirGrid">Repetir cada:</string>
     <string name="comentarios">Comentarios:</string>
     <string name="funcion">Funcion:</string>
-    <string name="selectImg">Selecciona imagen</string>
     <string name="title_activity_add_medicine">AddMedicineActivity</string>
     <string name="metodo">Metodo:</string>
 
@@ -134,5 +112,6 @@
     <string name="aceptarnewdosis">Agregar Dosis</string>
     <string name="title_activity_dia">DiaActivity</string>
     <string name="yalotome">Seleccione la dosis que ya has tomado:</string>
+    <string name="title_activity_historial">HistorialActivity</string>
 
 </resources>

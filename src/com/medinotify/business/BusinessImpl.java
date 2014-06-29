@@ -6,7 +6,7 @@ import com.medinotify.bbdd.DBRequest;
 import com.medinotify.model.Dosis;
 import com.medinotify.model.Medicina;
 import com.medinotify.model.Usuario;
-
+@SuppressWarnings("static-access")
 public class BusinessImpl implements Business {
 
 	@Override
@@ -17,6 +17,7 @@ public class BusinessImpl implements Business {
 			return null;
 	}
 
+	
 	@Override
 	public Usuario register(String nombreUsuario, String nombre,
 			String apellidos, boolean hombre, boolean mujer,
@@ -37,8 +38,7 @@ public class BusinessImpl implements Business {
 	}
 
 	private boolean exist(String nombreUsuario) {
-		// return new DBRequest().existUser(nombreUsuario);
-		return false;
+		return new DBRequest().existUser(nombreUsuario);
 	}
 
 	private String getSexo(boolean hombre) {
@@ -47,12 +47,10 @@ public class BusinessImpl implements Business {
 
 	@Override
 	public List<Medicina> getAllMedicinas(int idUser) {
-		// TODO Auto-generated method stub
 		return new DBRequest().getAllMedicines(idUser);
 	}
 	@Override
 	public List<Dosis> getAllDosis(int idUser) {
-		// TODO Auto-generated method stub
 		return new DBRequest().getAllDosis(idUser);
 	}
 
@@ -67,7 +65,7 @@ public class BusinessImpl implements Business {
 
 	private boolean isDatosCorrectos(String nombre, String funcion,
 			String metodo) {
-		return nombre != "" && funcion != "" && metodo != "";
+		return nombre == "" && funcion == "" && metodo == "";
 	}
 
 	@Override
@@ -79,7 +77,6 @@ public class BusinessImpl implements Business {
 
 	@Override
 	public void tomarDosis(int iduser,String fechaTomada, String dosisString) {
-		// TODO Auto-generated method stub
 		String cantidad = getCantidad(dosisString);
 		new DBRequest().tomarDosis(iduser,fechaTomada, cantidad);
 	}

@@ -7,6 +7,5 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="src/lib/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="src/lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
-	<classpathentry kind="lib" path="src/lib/sdmdii.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

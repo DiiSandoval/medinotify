@@ -2,7 +2,6 @@ package com.medinotify.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +19,7 @@ import com.medinotify.business.Business;
 import com.medinotify.business.BusinessImpl;
 import com.medinotify.model.Session;
 import com.medinotify.model.Usuario;
+import com.medinotify.utility.LaunchActivity;
 
 public class RegistroActivity extends Activity {
 
@@ -58,19 +58,17 @@ public class RegistroActivity extends Activity {
 	private void register() {
 		Usuario usuario = business.register(nombreUsuario.getText().toString(),
 				nombre.getText().toString(), apellidos.getText().toString(),
-				hombre.isChecked(), mujer.isChecked(),
-				fechaNacimiento.getText().toString(), email.getText()
-						.toString(), contrasena.getText().toString(),
-				repiteContrana.getText().toString());
+				hombre.isChecked(), mujer.isChecked(), fechaNacimiento
+						.getText().toString(), email.getText().toString(),
+				contrasena.getText().toString(), repiteContrana.getText()
+						.toString());
 		if (usuario != null) {
 			Session.getInstance().setUsuarioActual(usuario);
-			Intent intent = new Intent(RegistroActivity.this,
-					LoginActivity.class);
-			startActivity(intent);
-//			Toast.makeText(getApplicationContext(), "s", Toast.LENGTH_SHORT)
-//					.show();
+			LaunchActivity.launchLoginActivity(RegistroActivity.this);
 		} else {
-			Toast.makeText(getApplicationContext(), "Datos incorrectos",
+			Toast.makeText(
+					getApplicationContext(),
+					"Datos incorrectos/incompletos o puede que el usuario introducido ya exista.",
 					Toast.LENGTH_SHORT).show();
 		}
 
@@ -79,16 +77,12 @@ public class RegistroActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.registro, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -122,7 +116,6 @@ public class RegistroActivity extends Activity {
 
 		botonAceptar = (Button) findViewById(R.id.buttonAceptarRegister);
 		business = new BusinessImpl();
-		// serviceFactory = new MySQLServiceFactory(this);
 
 	}
 

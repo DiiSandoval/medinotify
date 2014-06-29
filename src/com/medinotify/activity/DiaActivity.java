@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,35 +49,32 @@ public class DiaActivity extends Activity {
 
 		getActionBar().setTitle("MediNotify");
 
-		dateDayView = (TextView) findViewById(R.id.textViewDateDay);
+		setDateDayView((TextView) findViewById(R.id.textViewDateDay));
 		writeDate();
 
-		// get the listview
+		
 		expListView = (ExpandableListView) findViewById(R.id.expandableListViewMorning);
 
-		// preparing list data
+		
 		prepareListData();
 
 		listAdapter = new ExpandableListAdapter(this, listDataHeader,
 				listDataChild);
 
-		// setting list adapter
+		
 		expListView.setAdapter(listAdapter);
 
-		// Listview Group click listener
+		
 		expListView.setOnGroupClickListener(new OnGroupClickListener() {
 
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v,
 					int groupPosition, long id) {
-				// Toast.makeText(getApplicationContext(),
-				// "Group Clicked " + listDataHeader.get(groupPosition),
-				// Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		});
 
-		// Listview Group expanded listener
+		
 		expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
 
 			@Override
@@ -89,7 +85,7 @@ public class DiaActivity extends Activity {
 			}
 		});
 
-		// Listview Group collasped listener
+		
 		expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
 
 			@Override
@@ -101,13 +97,12 @@ public class DiaActivity extends Activity {
 			}
 		});
 
-		// Listview on child click listener
+		
 		expListView.setOnChildClickListener(new OnChildClickListener() {
 
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
-				// TODO Auto-generated method stub
 				Toast.makeText(
 						getApplicationContext(),
 						"Has tomado "
@@ -127,9 +122,7 @@ public class DiaActivity extends Activity {
 				Session.getInstance().getUsuarioActual().setDosisAlmacenadas(dosis);
 				
 
-				Intent intent = new Intent(DiaActivity.this,
-						CalendarioActivity.class);
-				startActivity(intent);
+				LaunchActivity.launchCalendarActivity(DiaActivity.this);
 				return false;
 			}
 		});
@@ -138,7 +131,6 @@ public class DiaActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.dia, menu);
 		return true;
 	}
@@ -183,7 +175,6 @@ public class DiaActivity extends Activity {
 		listDataHeader.add("Tarde");
 		listDataHeader.add("Noche");
 
-		// Esto está hardcodeado de guay
 
 		List<String> medsMorning = new ArrayList<String>();
 		addMeds(medsMorning, "Mañana");
@@ -194,8 +185,7 @@ public class DiaActivity extends Activity {
 		List<String> medsNight = new ArrayList<String>();
 		addMeds(medsNight, "Noche");
 
-		listDataChild.put(listDataHeader.get(0), medsMorning); // Header, Child
-																// data
+		listDataChild.put(listDataHeader.get(0), medsMorning); 
 		listDataChild.put(listDataHeader.get(1), medsNoon);
 		listDataChild.put(listDataHeader.get(2), medsNight);
 	}
@@ -279,5 +269,13 @@ public class DiaActivity extends Activity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	public TextView getDateDayView() {
+		return dateDayView;
+	}
+
+	public void setDateDayView(TextView dateDayView) {
+		this.dateDayView = dateDayView;
 	}
 }
