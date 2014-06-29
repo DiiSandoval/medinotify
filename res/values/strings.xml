@@ -113,5 +113,6 @@
     <string name="title_activity_dia">DiaActivity</string>
     <string name="yalotome">Seleccione la dosis que ya has tomado:</string>
     <string name="title_activity_historial">HistorialActivity</string>
+    <string name="medicamento">Medicamento:</string>
 
 </resources>

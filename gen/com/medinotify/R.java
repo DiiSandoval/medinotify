@@ -219,6 +219,7 @@ public final class R {
         public static final int insulina=0x7f06002b;
         public static final int juan=0x7f06000a;
         public static final int leftmonth=0x7f06003d;
+        public static final int medicamento=0x7f06004f;
         public static final int medicamentos=0x7f06002a;
         public static final int metodo=0x7f060045;
         public static final int mujer=0x7f060019;

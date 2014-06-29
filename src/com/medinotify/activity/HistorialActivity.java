@@ -4,18 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.medinotify.R;
-import com.medinotify.R.id;
-import com.medinotify.R.layout;
-import com.medinotify.R.menu;
-import com.medinotify.model.Dosis;
-import com.medinotify.model.Medicina;
-import com.medinotify.model.Session;
-import com.medinotify.utility.ExpandableListAdapter;
-import com.medinotify.utility.LaunchActivity;
-
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,12 +13,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.os.Build;
+import android.widget.Toast;
+
+import com.medinotify.R;
+import com.medinotify.model.Dosis;
+import com.medinotify.model.Medicina;
+import com.medinotify.model.Session;
+import com.medinotify.utility.ExpandableListAdapter;
 
 public class HistorialActivity extends Activity {
 	ExpandableListAdapter listAdapter;
